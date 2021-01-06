@@ -62,19 +62,6 @@ export function tryUnlockMetamask(password) {
         return forceUpdateMetamaskState(dispatch)
       })
       .then(() => {
-        return new Promise((resolve, reject) => {
-          background.verifySeedPhrase((err) => {
-            if (err) {
-              dispatch(displayWarning(err.message))
-              reject(err)
-              return
-            }
-
-            resolve()
-          })
-        })
-      })
-      .then(() => {
         dispatch(hideLoadingIndication())
       })
       .catch((err) => {
@@ -131,6 +118,43 @@ export function createNewVaultAndGetSeedPhrase(password) {
   }
 }
 
+export function importExternalWallet(externalWallet, page) {
+  return async (dispatch) => {
+    dispatch(showLoadingIndication())
+    let accounts
+    try {
+      accounts = await promisifiedBackground.createBidirectionalQrAccount(
+        externalWallet,
+        page,
+      )
+    } catch (error) {
+      log.error(error)
+      dispatch(displayWarning(error.message))
+      throw error
+    }
+    dispatch(hideLoadingIndication())
+    await forceUpdateMetamaskState(dispatch)
+
+    return accounts
+  }
+}
+
+export function unlockAndGetBidirectionalQrAccount(password) {
+  return async (dispatch) => {
+    dispatch(showLoadingIndication())
+
+    try {
+      await submitPassword(password)
+      await forceUpdateMetamaskState(dispatch)
+      dispatch(hideLoadingIndication())
+    } catch (error) {
+      dispatch(hideLoadingIndication())
+      dispatch(displayWarning(error.message))
+      throw new Error(error.message)
+    }
+  }
+}
+
 export function unlockAndGetSeedPhrase(password) {
   return async (dispatch) => {
     dispatch(showLoadingIndication())
@@ -151,6 +175,7 @@ export function unlockAndGetSeedPhrase(password) {
 
 export function submitPassword(password) {
   return new Promise((resolve, reject) => {
+    console.log('action: submitPassword')
     background.submitPassword(password, (error) => {
       if (error) {
         reject(error)
@@ -160,6 +185,22 @@ export function submitPassword(password) {
       resolve()
     })
   })
+}
+
+export function createNewEmptyVault(password) {
+  return async (dispatch) => {
+    dispatch(showLoadingIndication())
+
+    try {
+      await background.createNewEmptyVault(password)
+      await forceUpdateMetamaskState(dispatch)
+      dispatch(hideLoadingIndication())
+    } catch (error) {
+      dispatch(hideLoadingIndication())
+      dispatch(displayWarning(error.message))
+      throw new Error(error.message)
+    }
+  }
 }
 
 export function createNewVault(password) {
@@ -411,6 +452,47 @@ export function connectHardware(deviceName, page, hdPath) {
   }
 }
 
+export function unlockBidirectionalQrAccount(index) {
+  log.debug(`background.unlockBidirectionalQrAccount`, index)
+  return (dispatch) => {
+    dispatch(showLoadingIndication())
+    return new Promise((resolve, reject) => {
+      background.unlockBidirectionalQrAccount(index, (err) => {
+        if (err) {
+          log.error(err)
+          dispatch(displayWarning(err.message))
+          reject(err)
+          return
+        }
+
+        dispatch(hideLoadingIndication())
+        resolve()
+      })
+    })
+  }
+}
+
+export function getBidirectionalQrAccountsByPage(page) {
+  log.debug(`background.getBidirectionalQrAccountsByPage`, page)
+  return async (dispatch) => {
+    dispatch(showLoadingIndication())
+    let accounts
+    try {
+      accounts = await promisifiedBackground.getBidirectionalQrAccountsByPage(
+        page,
+      )
+    } catch (error) {
+      log.error(error)
+      dispatch(displayWarning(error.message))
+      throw error
+    }
+    dispatch(hideLoadingIndication())
+    await forceUpdateMetamaskState(dispatch)
+
+    return accounts
+  }
+}
+
 export function unlockHardwareWalletAccount(index, deviceName, hdPath) {
   log.debug(`background.unlockHardwareWalletAccount`, index, deviceName, hdPath)
   return (dispatch) => {
@@ -443,6 +525,48 @@ export function showQrScanner() {
         name: 'QR_SCANNER',
       }),
     )
+  }
+}
+
+export function showExternalWalletImporter() {
+  return (dispatch) => {
+    dispatch(
+      showModal({
+        name: 'EXTERNAL_WALLET_IMPORTER',
+      }),
+    )
+  }
+}
+
+export function showBidirectionalTransactionDisplay() {
+  return (dispatch) => {
+    dispatch(
+      showModal({
+        name: 'BIDIRECTIONAL_TRANSACTION_DISPLAY',
+      }),
+    )
+  }
+}
+
+export function showBidirectionalSignatureImporter() {
+  return (dispatch) => {
+    dispatch(
+      showModal({
+        name: 'BIDIRECTIONAL_SIGNATURE_IMPORTER',
+      }),
+    )
+  }
+}
+
+export function cancelBidirectionalTransaction() {
+  return () => {
+    background.cancelBidirectionalQrTransaction()
+  }
+}
+
+export function submitBidirectionalSignature(signatureHex) {
+  return () => {
+    background.submitBidirectionalQrSignature(signatureHex)
   }
 }
 
