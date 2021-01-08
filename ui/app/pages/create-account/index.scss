@@ -1,5 +1,6 @@
 @import 'connect-hardware/index';
 @import 'import-account/index';
+@import 'create-bidirectional-qr-account/index';
 
 .new-account {
   width: 375px;
@@ -61,7 +62,6 @@
     }
   }
 }
-
 
 .new-account-create-form {
   display: flex;

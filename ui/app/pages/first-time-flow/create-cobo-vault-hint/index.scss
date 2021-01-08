@@ -1,10 +1,17 @@
 .create-cobo-vault-hint {
-  flex: 1;
-  width: 600px;
-  flex-direction: column;
-  padding: 16px;
+  &__text {
+    line-height: 24px;
+  }
 
-  p {
-    line-height: 16px;
+  &__hint {
+    color: grey;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  &__link {
+    color: blue;
+    text-underline: blue;
   }
 }

@@ -1,4 +1,4 @@
-.hw-tutorial {
+.cobo-hw-tutorial {
   width: 375px;
   border-top: 1px solid #d2d8dd;
   border-bottom: 1px solid #d2d8dd;
@@ -7,7 +7,7 @@
   padding: 15px 30px;
 }
 
-.hw-connect {
+.cobo-hw-connect {
   width: 100%;
 
   &__header {
@@ -172,7 +172,7 @@
     }
   }
 
-  &__get-hw {
+  &__get-cobo-hw {
     width: 100%;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -198,7 +198,7 @@
   }
 }
 
-.hw-account-list {
+.cobo-hw-account-list {
   display: flex;
   flex: 1;
   flex-flow: column;
@@ -291,9 +291,8 @@
   }
 }
 
-.hw-list-pagination {
+.cobo-hw-list-pagination {
   display: flex;
-  align-self: flex-end;
   margin-top: 10px;
 
   &__button {
@@ -346,7 +345,7 @@
   }
 }
 
-.hw-forget-device-container {
+.cobo-hw-forget-device-container {
   display: flex;
   flex-flow: column;
   align-items: center;
