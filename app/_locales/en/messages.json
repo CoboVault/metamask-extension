@@ -71,6 +71,15 @@
   "endOfFlowMessage6Cobo": {
     "message": "All Done"
   },
+  "supportCenterCobo": {
+    "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
+  },
+  "websiteCobo": {
+    "message": "https://cobo.com/hardware-wallet/cobo-vault?locale=en"
+  },
+  "contactUsCoboLink": {
+    "message": "https://support.cobo.com/hc/en-us/requests/new"
+  },
   "about": {
     "message": "About"
   },

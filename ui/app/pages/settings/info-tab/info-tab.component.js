@@ -20,7 +20,7 @@ export default class InfoTab extends PureComponent {
         <div className="info-tab__link-item">
           <Button
             type="link"
-            href="https://vault-static-resource.s3-ap-northeast-1.amazonaws.com/CoboVaultMobile_Privacy_Policy_en.html"
+            href="https://metamask.io/privacy.html"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -31,7 +31,7 @@ export default class InfoTab extends PureComponent {
         <div className="info-tab__link-item">
           <Button
             type="link"
-            href="https://vault-static-resource.s3-ap-northeast-1.amazonaws.com/CoboVaultMobile_Terms_of_Service_en.html"
+            href="https://metamask.io/terms.html"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -39,11 +39,22 @@ export default class InfoTab extends PureComponent {
             {t('terms')}
           </Button>
         </div>
+        <div className="info-tab__link-item">
+          <Button
+            type="link"
+            href="https://metamask.io/attributions.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="info-tab__link-text"
+          >
+            {t('attributions')}
+          </Button>
+        </div>
         <hr className="info-tab__separator" />
         <div className="info-tab__link-item">
           <Button
             type="link"
-            href="https://support.metamask.io"
+            href={t('supportCenterCobo')}
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -54,7 +65,7 @@ export default class InfoTab extends PureComponent {
         <div className="info-tab__link-item">
           <Button
             type="link"
-            href="https://cobo.com/hardware-wallet/cobo-vault"
+            href={t('websiteCobo')}
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -65,7 +76,7 @@ export default class InfoTab extends PureComponent {
         <div className="info-tab__link-item">
           <Button
             type="link"
-            href="https://support.cobo.com/hc/zh-cn/requests/new"
+            href={t('contactUsCoboLink')}
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
