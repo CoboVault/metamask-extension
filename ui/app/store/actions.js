@@ -732,6 +732,7 @@ export function signTypedMsg(msgData) {
 
 export function signTx(txData) {
   return (dispatch) => {
+    console.error('signTx', txData)
     global.ethQuery.sendTransaction(txData, (err) => {
       if (err) {
         dispatch(displayWarning(err.message))
@@ -913,6 +914,7 @@ export function updateSendEnsResolutionError(errorMessage) {
 
 export function signTokenTx(tokenAddress, toAddress, amount, txData) {
   return (dispatch) => {
+    console.error('signTokenTx', tokenAddress, toAddress, amount, txData)
     dispatch(showLoadingIndication())
     const token = global.eth.contract(abi).at(tokenAddress)
     token.transfer(toAddress, addHexPrefix(amount), txData).catch((err) => {

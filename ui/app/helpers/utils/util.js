@@ -413,6 +413,7 @@ export function toPrecisionWithoutTrailingZeros(n, precision) {
  * now prefixed with '0x'
  */
 export function addHexPrefixToObjectValues(obj) {
+  console.error('addHexPrefixToObjectValues', obj)
   return Object.keys(obj).reduce((newObj, key) => {
     return { ...newObj, [key]: addHexPrefix(obj[key]) }
   }, {})

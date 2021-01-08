@@ -71,6 +71,7 @@ function mapDispatchToProps(dispatch) {
   return {
     clearSend: () => dispatch(clearSend()),
     sign: ({ sendToken, to, amount, from, gas, gasPrice, data }) => {
+      console.error('sign')
       const txParams = constructTxParams({
         amount,
         data,
@@ -112,6 +113,7 @@ function mapDispatchToProps(dispatch) {
     },
 
     addToAddressBookIfNew: (newAddress, toAccounts, nickname = '') => {
+      console.error('addToAddressBookIfNew')
       const hexPrefixedAddress = addHexPrefix(newAddress)
       if (addressIsNew(toAccounts, hexPrefixedAddress)) {
         // TODO: nickname, i.e. addToAddressBook(recipient, nickname)
