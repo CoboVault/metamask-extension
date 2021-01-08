@@ -42,7 +42,7 @@
     "message": "If you wish to switch to another Cobo Vault, you must reinstall MetaMask for Cobo Vault and sync the Vault. (The current version only supports the synchronization of one Vault)"
   },
   "syncLinkDescription": {
-    "message": "点击此处查看详细教程"
+    "message": "Click here to view detailed tutorial"
   },
   "syncLink": {
     "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
