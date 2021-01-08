@@ -1198,7 +1198,7 @@ export default class MetamaskController extends EventEmitter {
   async unlockBidirectionalQrAccount(index) {
     const keyring = await this.getBidirectionalQrKeyring()
 
-    const deviceName = 'bidirectionalQrDevice'
+    const deviceName = 'Account'
     keyring.setAccountToUnlock(index)
     const oldAccounts = await this.keyringController.getAccounts()
     const keyState = await this.keyringController.addNewAccount(keyring)

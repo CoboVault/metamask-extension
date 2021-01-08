@@ -58,11 +58,12 @@ export default class BidirectionalTransactionDisplay extends Component {
         >
           <QRCode value={transactionData[current]} size={250} />
         </div>
-        <div style={{ paddingLeft: 20, paddingRight: 20 }}>
+        <div style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 20 }}>
           {this.context.t('scanCoboDescription')}
         </div>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div className="bidirectional-transaction-display__button-group">
           <Button
+            className="bidirectional-transaction-display__button"
             type="default"
             onClick={() => {
               this.handleCancel()
@@ -70,7 +71,11 @@ export default class BidirectionalTransactionDisplay extends Component {
           >
             {this.context.t('cancelTransaction')}
           </Button>
-          <Button type="secondary" onClick={showBidirectionalSignatureImporter}>
+          <Button
+            className="bidirectional-transaction-display__button"
+            type="primary"
+            onClick={showBidirectionalSignatureImporter}
+          >
             {this.context.t('getSignatureFromCoboVault')}
           </Button>
         </div>

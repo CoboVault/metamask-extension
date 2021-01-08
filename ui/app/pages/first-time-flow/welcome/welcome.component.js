@@ -58,7 +58,6 @@ export default class Welcome extends PureComponent {
               alt=""
             />
             <div>{t('metamaskDescriptionCobo')}</div>
-            <div>{t('happyToSeeYouCobo')}</div>
           </div>
           <Button
             type="primary"

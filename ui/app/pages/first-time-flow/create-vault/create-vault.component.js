@@ -145,24 +145,6 @@ export default class CreateVault extends PureComponent {
 
     return (
       <div>
-        <div className="first-time-flow__create-back">
-          <a
-            onClick={(e) => {
-              e.preventDefault()
-              this.context.metricsEvent({
-                eventOpts: {
-                  category: 'Onboarding',
-                  action: 'Create Password',
-                  name: 'Go Back from Onboarding Create',
-                },
-              })
-              this.props.history.push(INITIALIZE_SELECT_ACTION_ROUTE)
-            }}
-            href="#"
-          >
-            {`< Back`}
-          </a>
-        </div>
         <div className="first-time-flow__header">{t('createPassword')}</div>
         <form className="first-time-flow__form" onSubmit={this.handleCreate}>
           <TextField

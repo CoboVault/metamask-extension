@@ -1,42 +1,39 @@
 {
   "scanWithCoboVault": {
-    "message": "使用Cobo Vault扫描二维码"
+    "message": "使用 Cobo 金库扫描二维码"
   },
   "getSignatureFromCoboVault": {
-    "message": "扫描CoboVault二维码"
+    "message": "扫描"
   },
   "scanCoboDescription": {
-    "message": "Cobo Vault 对交易签完名后，点击下方“扫描Cobo Vault二维码”广播该交易"
+    "message": "Cobo 金库对交易签完名后，点击下方“扫描 Cobo 金库二维码”广播该交易"
   },
   "cancelTransaction": {
     "message": "拒绝"
   },
   "switchAccount": {
-    "message": "切换账号"
+    "message": "切换账户"
   },
   "welcomeCobo": {
-    "message": "欢迎使用 MetaMask for Cobo Vault 测试版"
+    "message": "欢迎使用 MetaMask for Cobo Vault (POC Beta 版本)"
   },
   "metamaskDescriptionCobo": {
-    "message": "请注意，MetaMask for Cobo Vault 应用不能和 MetaMask 官方应用同时存在"
-  },
-  "happyToSeeYouCobo": {
-    "message": "若您要使用 MetaMask for Cobo Vault，请先卸载MetaMask 官方应用"
+    "message": "在使用MetaMask for Cobo Vault前，您需先卸载其他所有的MetaMask（包括官方提供以及非官方fork）。同时运行可能会发生冲突。"
   },
   "getStartedCobo": {
     "message": "开始使用"
   },
   "syncCoboTitle": {
-    "message": "同步 Cobo Vault 硬件钱包"
+    "message": "同步 Cobo 金库"
   },
   "syncStep1": {
-    "message": "1. 打开 Cobo Vault 硬件钱包"
+    "message": "1. 打开 Cobo 金库"
   },
   "syncStep2": {
-    "message": "2. 选择观察钱包为“MetaMask for Cobo Vault”"
+    "message": "2. 选择观察钱包为 “MetaMask for Cobo Vault (POC Beta)”"
   },
   "syncStep3": {
-    "message": "3. 点击下方“扫描 Cobo Vault”按钮后扫描 Cobo Vault 上展示的钱包二维码"
+    "message": "3. 点击下方 “扫描 Cobo 金库” 按钮后扫描 Cobo 金库上展示的钱包二维码"
   },
   "syncStep4": {
     "message": "4. 扫描完成后进入观察钱包"
@@ -51,7 +48,7 @@
     "message": "https://support.cobo.com/hc/zh-cn/articles/360061649173"
   },
   "syncCobo": {
-    "message": "扫描 Cobo Vault"
+    "message": "扫描 Cobo 金库"
   },
   "congratulationsCobo": {
     "message": "恭喜"
@@ -63,22 +60,22 @@
     "message": "安全保存小技巧"
   },
   "endOfFlowMessage3Cobo": {
-    "message": "请您务必妥善保管好助记词，不要透露给任何人"
+    "message": "请您务必妥善保管好助记词，不要透露给任何人。"
   },
   "endOfFlowMessage4Cobo": {
-    "message": "谨防网络钓鱼！Cobo 在任何情况下都不会询问您的助记词"
+    "message": "谨防网络钓鱼！Cobo 在任何情况下都不会询问您的助记词。"
   },
   "endOfFlowMessage5Cobo": {
-    "message": "如有任何问题，您可邮件联系我们：support@cobo.com"
+    "message": "如有任何问题，您可邮件联系我们：support@cobo.com。"
   },
   "endOfFlowMessage6Cobo": {
     "message": "全部完成"
   },
   "metamaskVersionCobo": {
-    "message": "MetaMask for Cobo Vault 版本"
+    "message": "MetaMask for Cobo Vault (POC Beta)"
   },
   "builtByFork": {
-    "message": "MetaMask for Cobo Vault 是 fork MetaMask 代码并在其基础上进行更改，从而适配 Cobo Vault 硬件钱包。"
+    "message": "MetaMask for Cobo Vault 是为 Cobo 金库用户提供的浏览器观察钱包。Cobo 金库用户可使用该应用管理 ETH 及其 Token，以及连接区块链应用。"
   },
   "about": {
     "message": "关于"

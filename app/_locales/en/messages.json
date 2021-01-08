@@ -1,48 +1,45 @@
 {
   "scanWithCoboVault": {
-    "message": "使用Cobo Vault扫描二维码"
+    "message": "Scan using Cobo Vault"
   },
   "getSignatureFromCoboVault": {
-    "message": "扫描CoboVault二维码"
+    "message": "Scan"
   },
   "scanCoboDescription": {
-    "message": "Cobo Vault 对交易签完名后，点击下方“扫描Cobo Vault二维码”广播该交易"
+    "message": "After Cobo Vault signed the transaction, click Scan Cobo Vault to broadcast the transaction."
   },
   "cancelTransaction": {
-    "message": "拒绝"
+    "message": "Cancel"
   },
   "switchAccount": {
-    "message": "切换账号"
+    "message": "Swith Account"
   },
   "welcomeCobo": {
-    "message": "欢迎使用 MetaMask for Cobo Vault 测试版"
+    "message": "Welcome to MetaMask for Cobo Vault (POC Beta)"
   },
   "metamaskDescriptionCobo": {
-    "message": "请注意，MetaMask for Cobo Vault 应用不能和 MetaMask 官方应用同时存在"
-  },
-  "happyToSeeYouCobo": {
-    "message": "若您要使用 MetaMask for Cobo Vault，请先卸载MetaMask 官方应用"
+    "message": "You must disable ALL other instances of MetaMask on ALL open browsers when using MetaMask for Cobo Vault. If you have another instance running, it will interfere with requests to your Cobo Vault and you will get unexpected behavior."
   },
   "getStartedCobo": {
-    "message": "开始使用"
+    "message": "Get Started"
   },
   "syncCoboTitle": {
-    "message": "同步 Cobo Vault 硬件钱包"
+    "message": "Sync Cobo Vault Hardware wallet"
   },
   "syncStep1": {
-    "message": "1. 打开 Cobo Vault 硬件钱包"
+    "message": "1. Open Cobo Vault "
   },
   "syncStep2": {
-    "message": "2. 选择观察钱包为“MetaMask for Cobo Vault”"
+    "message": "2. Select watch-only wallet is “MetaMask for Cobo Vault (POC Beta)”"
   },
   "syncStep3": {
-    "message": "3. 点击下方“扫描 Cobo Vault”按钮后扫描 Cobo Vault 上展示的钱包二维码"
+    "message": "3. Click “Scan Cobo Vault” button and scan the QR Code displays on Cobo Vault"
   },
   "syncStep4": {
-    "message": "4. 扫描完成后进入观察钱包"
+    "message": "4. Enter watch-only wallet"
   },
   "syncSubMessage": {
-    "message": "当前MetaMask for Cobo Vault仅支持同步一个 Cobo 金库，若您想切换至另一个 Cobo 金库，您需要卸载重装 MetaMask For Cobo Vault，然后再进行同步。"
+    "message": "If you wish to switch to another Cobo Vault, you must reinstall MetaMask for Cobo Vault and sync the Vault. (The current version only supports the synchronization of one Vault)"
   },
   "syncLinkDescription": {
     "message": "点击此处查看详细教程"
@@ -51,28 +48,28 @@
     "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
   },
   "syncCobo": {
-    "message": "扫描 Cobo Vault"
+    "message": "Scan Cobo Vault"
   },
   "congratulationsCobo": {
-    "message": "恭喜"
+    "message": "Congratulations"
   },
   "endOfFlowMessage1Cobo": {
-    "message": "您已完成 Cobo 金库的同步，点击下方按钮后进入 ETH 账户。"
+    "message": "You have completed the sync of the Cobo Vault, click the button below to enter the ETH account."
   },
   "endOfFlowMessage2Cobo": {
-    "message": "安全保存小技巧"
+    "message": "Tips on storing safely"
   },
   "endOfFlowMessage3Cobo": {
-    "message": "请您务必妥善保管好助记词，不要透露给任何人"
+    "message": "Never share your recovery phrase with anyone."
   },
   "endOfFlowMessage4Cobo": {
-    "message": "谨防网络钓鱼！Cobo 在任何情况下都不会询问您的助记词"
+    "message": "Be careful of phishing! MetaMask for Cobo Vault will never spontaneously ask for your recovery phrase."
   },
   "endOfFlowMessage5Cobo": {
-    "message": "如有任何问题，您可邮件联系我们：support@cobo.com"
+    "message": "If you ever have questions or see something fishy, email support@cobo.com."
   },
   "endOfFlowMessage6Cobo": {
-    "message": "全部完成"
+    "message": "All Done"
   },
   "about": {
     "message": "About"

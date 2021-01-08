@@ -1,0 +1,11 @@
+.bidirectional-transaction-display {
+  &__button-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  &__button {
+    width: 120px !important;
+  }
+}
