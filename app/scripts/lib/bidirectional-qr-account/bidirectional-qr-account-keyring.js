@@ -166,7 +166,7 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
       })
       this.once(`${signId}-canceled`, () => {
         this.memStore.updateState({ signPayload: {} })
-        reject(new Error('transaction canceled'))
+        reject(new Error('bidirectionalQrKeyring error: transaction#canceled'))
       })
     })
   }
