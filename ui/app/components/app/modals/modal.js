@@ -482,7 +482,7 @@ class Modal extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps, _) {
-    if (!this.props.signPayload.signId && nextProps.signPayload.signId) {
+    if (this.props.signPayload.signId !== nextProps.signPayload.signId) {
       this.props.showBidirectionalTransactionDisplay()
     }
     if (nextProps.active) {
