@@ -156,6 +156,7 @@ export default class BidirectionalSignatureImporter extends Component {
     } else if (error.message === t('unknownQrCode')) {
       msg = t('unknownQrCode')
     } else if (error.message === '#mismatched_signId') {
+      title = t('mismatchedSignIdTitle')
       msg = t('mismatchedSignId')
     } else {
       title = t('unknownCameraErrorTitle')

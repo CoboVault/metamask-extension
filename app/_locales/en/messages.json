@@ -2115,8 +2115,11 @@
   "unknown": {
     "message": "Unknown"
   },
+  "mismatchedSignIdTitle": {
+    "message": "Read Error"
+  },
   "mismatchedSignId": {
-    "message": "Transaction info mismatched, please retry."
+    "message": "Not the QR code of the current transaction, please check and retry."
   },
   "unknownCameraError": {
     "message": "Invalid Qr Code, please retry."
