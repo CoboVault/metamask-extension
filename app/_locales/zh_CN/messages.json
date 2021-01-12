@@ -160,7 +160,7 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "MetaMask For Cobo Vault",
     "description": "The name of the application"
   },
   "approve": {
@@ -1254,7 +1254,7 @@
     "message": "未知"
   },
   "unknownCameraError": {
-    "message": "尝试获取相机使用权限时报错。请重试…"
+    "message": "非法二维码，请重试。"
   },
   "unknownCameraErrorTitle": {
     "message": "哎呀！出问题了…"

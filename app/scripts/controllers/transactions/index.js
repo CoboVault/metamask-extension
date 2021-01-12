@@ -464,6 +464,7 @@ export default class TransactionController extends EventEmitter {
   @param {Object} txMeta
   */
   async updateAndApproveTransaction(txMeta) {
+    console.error('updateAndApproveTransaction', txMeta)
     this.txStateManager.updateTx(txMeta, 'confTx: user approved transaction')
     await this.approveTransaction(txMeta.id)
   }
@@ -512,7 +513,9 @@ export default class TransactionController extends EventEmitter {
       }
       this.txStateManager.updateTx(txMeta, 'transactions#approveTransaction')
       // sign transaction
+      console.error('before sign transaction', txId)
       const rawTx = await this.signTransaction(txId)
+      console.error('transaction signed')
       await this.publishTransaction(txId, rawTx)
       // approve
       this.txStateManager.setTxStatusApproved(txId)

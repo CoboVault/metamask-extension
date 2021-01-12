@@ -219,7 +219,7 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "MetaMask For Cobo Vault",
     "description": "The name of the application"
   },
   "approvalAndAggregatorTxFeeCost": {
@@ -2116,7 +2116,7 @@
     "message": "Unknown"
   },
   "unknownCameraError": {
-    "message": "There was an error while trying to access your camera. Please try again..."
+    "message": "Invalid Qr Code, please retry"
   },
   "unknownCameraErrorTitle": {
     "message": "Ooops! Something went wrong...."

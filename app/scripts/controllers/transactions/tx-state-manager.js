@@ -221,6 +221,7 @@ export default class TransactionStateManager extends EventEmitter {
    * @param {string} [note] - a note about the update for history
    */
   updateTx(txMeta, note) {
+    console.error('updateTx')
     // normalize and validate txParams if present
     if (txMeta.txParams) {
       txMeta.txParams = this.normalizeAndValidateTxParams(txMeta.txParams)
@@ -241,6 +242,7 @@ export default class TransactionStateManager extends EventEmitter {
     const txList = this.getFullTxList()
     const index = txList.findIndex((txData) => txData.id === txId)
     txList[index] = txMeta
+    console.error('updateTx end')
     this._saveTxList(txList)
   }
 

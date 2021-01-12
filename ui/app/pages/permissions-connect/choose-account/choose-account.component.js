@@ -182,14 +182,6 @@ export default class ChooseAccount extends Component {
             </Tooltip>
           </div>
         ) : null}
-        <div
-          className="permissions-connect-choose-account__text-blue"
-          onClick={() =>
-            selectNewAccountViaModal(this.handleAccountClick.bind(this))
-          }
-        >
-          {this.context.t('newAccount')}
-        </div>
       </div>
     )
   }
