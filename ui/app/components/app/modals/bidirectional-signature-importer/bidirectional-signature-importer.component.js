@@ -21,6 +21,7 @@ function onlyUnique(value, index, arr) {
 
 export default class BidirectionalSignatureImporter extends Component {
   static propTypes = {
+    signPayload: PropTypes.object.isRequired,
     hideModal: PropTypes.func.isRequired,
     qrCodeDetected: PropTypes.func.isRequired,
     submitSignature: PropTypes.func.isRequired,
@@ -154,6 +155,8 @@ export default class BidirectionalSignatureImporter extends Component {
       msg = t('noWebcamFound')
     } else if (error.message === t('unknownQrCode')) {
       msg = t('unknownQrCode')
+    } else if (error.message === '#mismatched_signId') {
+      msg = t('mismatchedSignId')
     } else {
       title = t('unknownCameraErrorTitle')
       msg = t('unknownCameraError')
@@ -198,8 +201,13 @@ export default class BidirectionalSignatureImporter extends Component {
             const result = JSON.parse(
               Buffer.from(decodeUR(this.state.urs), 'hex').toString('utf-8'),
             )
-            this.props.submitSignature(result)
-            this.stopAndClose()
+            const { signId } = result
+            if (signId === this.props.signPayload.signId) {
+              this.props.submitSignature(result)
+              this.stopAndClose()
+            } else {
+              throw new Error('#mismatched_signId')
+            }
           } else {
             this.setState({
               urs: newUrs,

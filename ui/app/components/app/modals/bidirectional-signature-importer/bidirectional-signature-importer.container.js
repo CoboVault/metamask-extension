@@ -7,6 +7,12 @@ import {
 } from '../../../../store/actions'
 import BidirectionalSignatureImporter from './bidirectional-signature-importer.component'
 
+const mapStateToProps = (state) => {
+  return {
+    signPayload: state.metamask.signPayload,
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     hideModal: () => dispatch(hideModal()),
@@ -17,4 +23,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(BidirectionalSignatureImporter)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(BidirectionalSignatureImporter)

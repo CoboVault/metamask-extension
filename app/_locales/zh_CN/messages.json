@@ -1253,6 +1253,9 @@
   "unknown": {
     "message": "未知"
   },
+  "mismatchedSignId": {
+    "message": "二维码交易信息与当前交易不匹配，请重试。"
+  },
   "unknownCameraError": {
     "message": "非法二维码，请重试。"
   },
