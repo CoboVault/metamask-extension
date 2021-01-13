@@ -485,6 +485,9 @@ class Modal extends Component {
     if (this.props.signPayload.signId !== nextProps.signPayload.signId) {
       this.props.showBidirectionalTransactionDisplay()
     }
+    if (nextProps.signPayload.signId === undefined) {
+      this.hide()
+    }
     if (nextProps.active) {
       this.show()
     } else if (this.props.active) {

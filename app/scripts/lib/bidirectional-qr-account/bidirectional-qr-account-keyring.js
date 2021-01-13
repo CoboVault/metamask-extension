@@ -164,11 +164,23 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
         this.memStore.updateState({ signPayload: {} })
         resolve(tx)
       })
-      this.once(`${signId}-canceled`, () => {
+      this.once(`${signId}-rejected`, () => {
         this.memStore.updateState({ signPayload: {} })
-        reject(new Error('bidirectionalQrKeyring error: transaction#canceled'))
+        reject(new Error('bidirectionalQrKeyring error: transaction#rejected'))
+      })
+      this.once(`${signId}-hang`, () => {
+        this.memStore.updateState({ signPayload: {} })
+        reject(
+          new Error(
+            'CoboVault transaction alert: transaction#hang. Signing canceled, please retry',
+          ),
+        )
       })
     })
+  }
+
+  clearTransaction() {
+    this.emit(`${this.memStore.getState().signPayload.signId}-hang`)
   }
   //
   // signMessage(withAccount, data) {
@@ -256,7 +268,7 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
   }
 
   cancelTransaction() {
-    this.emit(`${this.memStore.getState().signPayload.signId}-canceled`)
+    this.emit(`${this.memStore.getState().signPayload.signId}-rejected`)
   }
 
   /* PRIVATE METHODS */

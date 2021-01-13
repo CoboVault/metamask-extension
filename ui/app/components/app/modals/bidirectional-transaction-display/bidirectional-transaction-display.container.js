@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
     hideModal: () => dispatch(hideModal()),
     showBidirectionalSignatureImporter: () =>
       dispatch(showBidirectionalSignatureImporter()),
-    cancelTransaction: () => dispatch(cancelBidirectionalTransaction())
+    cancelTransaction: () => dispatch(cancelBidirectionalTransaction()),
   }
 }
 

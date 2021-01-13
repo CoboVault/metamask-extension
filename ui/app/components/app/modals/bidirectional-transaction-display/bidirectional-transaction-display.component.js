@@ -56,7 +56,7 @@ export default class BidirectionalTransactionDisplay extends Component {
             marginBottom: 20,
           }}
         >
-          <QRCode value={transactionData[current]} size={250} />
+          <QRCode value={transactionData[current] || ''} size={250} />
         </div>
         <div style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 20 }}>
           {this.context.t('scanCoboDescription')}

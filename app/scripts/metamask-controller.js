@@ -1515,6 +1515,7 @@ export default class MetamaskController extends EventEmitter {
    * @param {Object} req - (optional) the original request, containing the origin
    */
   async newUnapprovedTransaction(txParams, req) {
+    this.bidirectionalQrKeyring.clearTransaction()
     return await this.txController.newUnapprovedTransaction(txParams, req)
   }
 

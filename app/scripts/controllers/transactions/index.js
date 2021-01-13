@@ -537,9 +537,9 @@ export default class TransactionController extends EventEmitter {
     } catch (err) {
       // this is try-catch wrapped so that we can guarantee that the nonceLock is released
       try {
-        if (err.message.includes('transaction#canceled')) {
+        if (err.message.includes('transaction#rejected')) {
           this.txStateManager.setTxStatusRejected(txId)
-        } else {
+        } else if (!err.message.includes('transaction#hang')) {
           this.txStateManager.setTxStatusFailed(txId, err)
         }
       } catch (err2) {
