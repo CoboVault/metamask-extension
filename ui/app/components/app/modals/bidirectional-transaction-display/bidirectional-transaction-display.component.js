@@ -42,7 +42,8 @@ export default class BidirectionalTransactionDisplay extends Component {
   render() {
     const { current } = this.state
     const { transactionData, showBidirectionalSignatureImporter } = this.props
-    return (
+
+    return transactionData[current] ? (
       <div className="qr-scanner">
         <div className="qr-scanner__title">
           <p>{this.context.t('scanWithCoboVault')}</p>
@@ -56,7 +57,7 @@ export default class BidirectionalTransactionDisplay extends Component {
             marginBottom: 20,
           }}
         >
-          <QRCode value={transactionData[current] || ''} size={250} />
+          <QRCode value={transactionData[current]} size={250} />
         </div>
         <div style={{ paddingLeft: 20, paddingRight: 20, paddingBottom: 20 }}>
           {this.context.t('scanCoboDescription')}
@@ -80,6 +81,6 @@ export default class BidirectionalTransactionDisplay extends Component {
           </Button>
         </div>
       </div>
-    )
+    ) : null
   }
 }

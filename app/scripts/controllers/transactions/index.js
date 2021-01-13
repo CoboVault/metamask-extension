@@ -464,7 +464,6 @@ export default class TransactionController extends EventEmitter {
   @param {Object} txMeta
   */
   async updateAndApproveTransaction(txMeta) {
-    console.error('updateAndApproveTransaction', txMeta)
     this.txStateManager.updateTx(txMeta, 'confTx: user approved transaction')
     await this.approveTransaction(txMeta.id)
   }
@@ -537,9 +536,7 @@ export default class TransactionController extends EventEmitter {
     } catch (err) {
       // this is try-catch wrapped so that we can guarantee that the nonceLock is released
       try {
-        if (err.message.includes('transaction#rejected')) {
-          this.txStateManager.setTxStatusRejected(txId)
-        } else if (!err.message.includes('transaction#hang')) {
+        if (!err.message.includes('CoboVault#Tx_canceled')) {
           this.txStateManager.setTxStatusFailed(txId, err)
         }
       } catch (err2) {
