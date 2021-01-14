@@ -228,10 +228,38 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
   //   })
   // }
   //
-  // signTypedData(withAccount, typedData) {
-  //   // Waiting on trezor to enable this
-  //   return Promise.reject(new Error('Not supported on this device'))
-  // }
+  signTypedData(withAccount, typedData) {
+    return new Promise((resolve, reject) => {
+      const hdPath = this._pathFromAddress(withAccount)
+      const signId = hash
+        .sha256()
+        .update(`${JSON.stringify(typedData)}${hdPath}${this.xfp}`)
+        .digest('hex')
+        .slice(0, 8)
+      const signPayload = {
+        data: typedData,
+        xfp: this.xfp,
+        hdPath,
+        signId,
+      }
+      console.log(signPayload)
+      this.memStore.updateState({
+        signPayload,
+      })
+      this.once(`${signId}-signed`, (signature) => {
+        this.memStore.updateState({ signPayload: {} })
+        resolve(signature)
+      })
+      this.once(`${signId}-canceled`, () => {
+        this.memStore.updateState({ signPayload: {} })
+        reject(
+          new Error(
+            'CoboVault#TypedMsg_canceled. Signing canceled, please retry',
+          ),
+        )
+      })
+    })
+  }
   //
   // exportAccount(address) {
   //   return Promise.reject(new Error('Not supported on this device'))
