@@ -3,5 +3,6 @@
     "gecko": {
       "strict_min_version": "56.0"
     }
-  }
+  },
+  "content_security_policy": "script-src 'self' blob: ; object-src 'self';"
 }
