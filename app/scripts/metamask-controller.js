@@ -1831,7 +1831,8 @@ export default class MetamaskController extends EventEmitter {
     const msgId = msgParams.metamaskId
     const { version } = msgParams
     try {
-      const cleanMsgParams = await this.typedMessageManager.approveMessage(
+      // approve will trigger window close
+      const cleanMsgParams = await this.typedMessageManager.prepMsgForSigning(
         msgParams,
       )
 
