@@ -556,8 +556,8 @@ export default class ConfirmTransactionBase extends Component {
                     submitting: false,
                   },
                   () => {
-                    history.push(mostRecentOverviewPage)
                     updateCustomNonce('')
+                    history.push(mostRecentOverviewPage)
                   },
                 )
               })
