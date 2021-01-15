@@ -550,6 +550,7 @@ export default class ConfirmTransactionBase extends Component {
           } else {
             sendTransaction(txData)
               .then(() => {
+                updateCustomNonce('')
                 clearConfirmTransaction()
               })
               .catch((error) => {
