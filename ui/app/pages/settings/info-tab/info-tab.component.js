@@ -20,7 +20,7 @@ export default class InfoTab extends PureComponent {
         <div className="info-tab__link-item">
           <Button
             type="link"
-            href="https://vault-static-resource.s3-ap-northeast-1.amazonaws.com/CoboVaultMobile_Privacy_Policy_en.html"
+            href="https://metamask.io/privacy.html"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -31,7 +31,7 @@ export default class InfoTab extends PureComponent {
         <div className="info-tab__link-item">
           <Button
             type="link"
-            href="https://vault-static-resource.s3-ap-northeast-1.amazonaws.com/CoboVaultMobile_Terms_of_Service_en.html"
+            href="https://metamask.io/terms.html"
             target="_blank"
             rel="noopener noreferrer"
             className="info-tab__link-text"
@@ -98,9 +98,6 @@ export default class InfoTab extends PureComponent {
               <div className="info-tab__version-number">
                 {this.state.version}
               </div>
-            </div>
-            <div className="info-tab__item">
-              <div className="info-tab__about">{t('builtByFork')}</div>
             </div>
           </div>
           {this.renderInfoLinks()}

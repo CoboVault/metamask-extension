@@ -74,9 +74,6 @@
   "metamaskVersionCobo": {
     "message": "MetaMask for Cobo Vault (POC Beta)"
   },
-  "builtByFork": {
-    "message": "MetaMask for Cobo Vault 是为 Cobo 金库用户提供的浏览器观察钱包。Cobo 金库用户可使用该应用管理 ETH 及其 Token，以及连接区块链应用。"
-  },
   "supportCenterCobo": {
     "message": "https://support.cobo.com/hc/zh-cn/articles/360061649173"
   },

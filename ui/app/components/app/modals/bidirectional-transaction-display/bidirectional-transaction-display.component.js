@@ -35,8 +35,8 @@ export default class BidirectionalTransactionDisplay extends Component {
 
   handleCancel() {
     const { hideModal, cancelTransaction } = this.props
-    hideModal()
     cancelTransaction()
+    hideModal()
   }
 
   render() {

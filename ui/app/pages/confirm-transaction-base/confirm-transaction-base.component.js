@@ -551,15 +551,6 @@ export default class ConfirmTransactionBase extends Component {
             sendTransaction(txData)
               .then(() => {
                 clearConfirmTransaction()
-                this.setState(
-                  {
-                    submitting: false,
-                  },
-                  () => {
-                    updateCustomNonce('')
-                    history.push(mostRecentOverviewPage)
-                  },
-                )
               })
               .catch((error) => {
                 this.setState({

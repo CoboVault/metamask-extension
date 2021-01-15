@@ -71,6 +71,9 @@
   "endOfFlowMessage6Cobo": {
     "message": "All Done"
   },
+  "metamaskVersionCobo": {
+    "message": "MetaMask for Cobo Vault (POC Beta)"
+  },
   "supportCenterCobo": {
     "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
   },

@@ -245,9 +245,9 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
       this.memStore.updateState({
         signPayload,
       })
-      this.once(`${signId}-signed`, (signature) => {
+      this.once(`${signId}-signed`, (r, s, v) => {
         this.memStore.updateState({ signPayload: {} })
-        resolve(signature)
+        resolve(Buffer.concat([r, s, v]))
       })
       this.once(`${signId}-canceled`, () => {
         this.memStore.updateState({ signPayload: {} })

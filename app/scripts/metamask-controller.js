@@ -22,7 +22,6 @@ import {
   CurrencyRateController,
   PhishingController,
 } from '@metamask/controllers'
-import { ObservableStore } from '@metamask/obs-store'
 import { getBackgroundMetaMetricState } from '../../ui/app/selectors'
 import { TRANSACTION_STATUSES } from '../../shared/constants/transaction'
 import ComposableObservableStore from './lib/ComposableObservableStore'
@@ -1255,10 +1254,6 @@ export default class MetamaskController extends EventEmitter {
     }
     keyring.network = this.networkController.getProviderConfig().type
     return keyring
-  }
-
-  cancelBidirectionalQrTransaction() {
-    this.bidirectionalQrKeyring
   }
 
   //
