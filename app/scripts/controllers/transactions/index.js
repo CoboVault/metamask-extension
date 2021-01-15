@@ -482,9 +482,7 @@ export default class TransactionController extends EventEmitter {
     // we need to keep track of what is currently being signed,
     // So that we do not increment nonce + resubmit something
     // that is already being incremented & signed.
-    console.error('approve transaction', txId)
     if (this.inProcessOfSigning.has(txId)) {
-      console.error('in process', txId)
       return
     }
     this.inProcessOfSigning.add(txId)
@@ -492,45 +490,29 @@ export default class TransactionController extends EventEmitter {
     try {
       // get next nonce
       const txMeta = this.txStateManager.getTx(txId)
-      console.error('txMeta', txMeta)
       const fromAddress = txMeta.txParams.from
-      console.error('fromAddress', fromAddress)
       // wait for a nonce
       let { customNonceValue } = txMeta
-      console.error('customNonceValue', customNonceValue)
       customNonceValue = Number(customNonceValue)
       nonceLock = await this.nonceTracker.getNonceLock(fromAddress)
-      console.error('nonceLock', nonceLock)
       // add nonce to txParams
       // if txMeta has lastGasPrice then it is a retry at same nonce with higher
       // gas price transaction and their for the nonce should not be calculated
       const nonce = txMeta.lastGasPrice
         ? txMeta.txParams.nonce
         : nonceLock.nextNonce
-      console.error('nonce', nonce)
       const customOrNonce =
         customNonceValue === 0 ? customNonceValue : customNonceValue || nonce
-      console.error('customOrNonce', customOrNonce)
       txMeta.txParams.nonce = addHexPrefix(customOrNonce.toString(16))
-      console.error('txMeta.txParams.nonce', txMeta.txParams.nonce)
       // add nonce debugging information to txMeta
       txMeta.nonceDetails = nonceLock.nonceDetails
-      console.error('txMeta.nonceDetails', txMeta.nonceDetails)
       if (customNonceValue) {
         txMeta.nonceDetails.customNonceValue = customNonceValue
-        console.error(
-          'txMeta.nonceDetails.customNonceValue',
-          txMeta.nonceDetails.customNonceValue,
-        )
       }
       this.txStateManager.updateTx(txMeta, 'transactions#approveTransaction')
       // sign transaction
-      console.error('before sign transaction', txId)
       const rawTx = await this.signTransaction(txId)
-      console.error('transaction signed')
       await this.publishTransaction(txId, rawTx)
-      // approve
-      this.txStateManager.setTxStatusApproved(txId)
       // must set transaction to submitted/failed before releasing lock
       nonceLock.releaseLock()
     } catch (err) {

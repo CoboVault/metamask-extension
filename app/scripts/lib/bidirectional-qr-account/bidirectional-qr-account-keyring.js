@@ -242,7 +242,6 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
         hdPath,
         signId,
       }
-      console.log(signPayload)
       this.memStore.updateState({
         signPayload,
       })

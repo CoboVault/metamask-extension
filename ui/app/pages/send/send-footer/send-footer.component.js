@@ -41,7 +41,6 @@ export default class SendFooter extends Component {
   }
 
   async onSubmit(event) {
-    console.error('onSubmit')
     event.preventDefault()
     const {
       addToAddressBookIfNew,

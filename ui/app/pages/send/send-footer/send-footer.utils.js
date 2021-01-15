@@ -12,7 +12,6 @@ export function constructTxParams({
   gas,
   gasPrice,
 }) {
-  console.error('constructTxParams')
   const txParams = {
     data,
     from,

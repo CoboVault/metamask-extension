@@ -1852,7 +1852,9 @@ export default class MetamaskController extends EventEmitter {
       return this.getState()
     } catch (error) {
       log.info('MetaMaskController - eth_signTypedData failed.', error)
-      this.typedMessageManager.errorMessage(msgId, error)
+      if (!error.message.includes('CoboVault#TypedMsg_canceled')) {
+        this.typedMessageManager.errorMessage(msgId, error)
+      }
       throw error
     }
   }

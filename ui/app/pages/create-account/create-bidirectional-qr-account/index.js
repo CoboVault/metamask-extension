@@ -151,8 +151,7 @@ class CreateBidirectionalQrAccount extends Component {
       <AccountList
         accounts={this.state.accounts}
         selectedAccount={this.state.selectedAccount}
-        selectedAccounts={this.state.selectedAccounts}
-        onAccountChange={this.onAccountChange}
+        onAccountChange={(account) => this.onAccountChange(account)}
         network={this.props.network}
         getPage={this.getPage}
         onUnlockAccount={this.onUnlockAccount}
@@ -173,8 +172,6 @@ class CreateBidirectionalQrAccount extends Component {
 }
 
 CreateBidirectionalQrAccount.propTypes = {
-  showAlert: PropTypes.func,
-  hideAlert: PropTypes.func,
   history: PropTypes.object,
   network: PropTypes.string,
   accounts: PropTypes.object,
