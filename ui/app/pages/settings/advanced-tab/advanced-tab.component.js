@@ -472,6 +472,7 @@ export default class AdvancedTab extends PureComponent {
         {this.renderResetAccount()}
         {this.renderAdvancedGasInputInline()}
         {this.renderHexDataOptIn()}
+        {this.renderUseNonceOptIn()}
         {this.renderShowConversionInTestnets()}
         {this.renderAutoLockTimeLimit()}
         {this.renderIpfsGatewayControl()}
