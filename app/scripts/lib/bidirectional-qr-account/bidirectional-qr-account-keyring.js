@@ -161,11 +161,9 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
         tx.r = r
         tx.s = s
         tx.v = v
-        this.memStore.updateState({ signPayload: {} })
         resolve(tx)
       })
       this.once(`${signId}-canceled`, () => {
-        this.memStore.updateState({ signPayload: {} })
         reject(
           new Error('CoboVault#Tx_canceled. Signing canceled, please retry'),
         )
