@@ -246,11 +246,9 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
         signPayload,
       })
       this.once(`${signId}-signed`, (r, s, v) => {
-        this.memStore.updateState({ signPayload: {} })
         resolve(Buffer.concat([r, s, v]))
       })
       this.once(`${signId}-canceled`, () => {
-        this.memStore.updateState({ signPayload: {} })
         reject(
           new Error(
             'CoboVault#TypedMsg_canceled. Signing canceled, please retry',
@@ -278,15 +276,18 @@ class BidirectionalQrAccountKeyring extends EventEmitter {
     const s = Buffer.from(signatureHex.slice(64, 128), 'hex')
     const v = Buffer.from(signatureHex.slice(128), 'hex')
     const storedSignId = this.memStore.getState().signPayload.signId
+    this.memStore.updateState({ signPayload: {} })
     if (signId !== storedSignId) {
-      this.cancelTransaction()
+      this.emit(`${storedSignId}-canceled`)
       throw new Error('Mismatched sign id')
     }
-    this.emit(`${this.memStore.getState().signPayload.signId}-signed`, r, s, v)
+    this.emit(`${storedSignId}-signed`, r, s, v)
   }
 
   cancelTransaction() {
-    this.emit(`${this.memStore.getState().signPayload.signId}-canceled`)
+    const { signId } = this.memStore.getState().signPayload
+    this.memStore.updateState({ signPayload: {} })
+    this.emit(`${signId}-canceled`)
   }
 
   /* PRIVATE METHODS */
