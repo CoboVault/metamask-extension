@@ -39,14 +39,6 @@ export default class ThreeBoxController {
         const { isUnlocked } = getKeyringControllerState()
 
         const accounts = await this.keyringController.getAccounts()
-
-        if (isUnlocked && accounts[0]) {
-          const appKeyAddress = await this.keyringController.getAppKeyAddress(
-            accounts[0],
-            'wallet://3box.metamask.io',
-          )
-          return [appKeyAddress]
-        }
         return []
       },
       processPersonalMessage: async (msgParams) => {
@@ -83,9 +75,6 @@ export default class ThreeBoxController {
   async init() {
     const accounts = await this.keyringController.getAccounts()
     this.address = accounts[0]
-    if (this.address && !(this.box && this.store.getState().threeBoxSynced)) {
-      await this.new3Box()
-    }
   }
 
   async _update3Box() {
