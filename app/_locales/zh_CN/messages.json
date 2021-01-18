@@ -15,10 +15,10 @@
     "message": "切换账户"
   },
   "welcomeCobo": {
-    "message": "欢迎使用 MetaMask for Cobo Vault (POC Beta 版本)"
+    "message": "欢迎使用 MetaMask PoC for Cobo Vault (Beta 版本)"
   },
   "metamaskDescriptionCobo": {
-    "message": "在使用MetaMask for Cobo Vault前，您需先卸载其他所有的MetaMask（包括官方提供以及非官方fork）。同时运行可能会发生冲突。"
+    "message": "在使用MetaMask for Cobo Vault前，您需先卸载其他所有的MetaMask。同时运行可能会发生冲突。"
   },
   "getStartedCobo": {
     "message": "开始使用"
@@ -30,7 +30,7 @@
     "message": "1. 打开 Cobo 金库"
   },
   "syncStep2": {
-    "message": "2. 选择观察钱包为 “MetaMask for Cobo Vault (POC Beta)”"
+    "message": "2. 选择观察钱包为 “MetaMask for Cobo Vault”"
   },
   "syncStep3": {
     "message": "3. 点击下方 “扫描 Cobo 金库” 按钮后扫描 Cobo 金库上展示的钱包二维码"
@@ -72,7 +72,7 @@
     "message": "全部完成"
   },
   "metamaskVersionCobo": {
-    "message": "MetaMask for Cobo Vault (POC Beta)"
+    "message": "MetaMask PoC for Cobo Vault (Beta)"
   },
   "supportCenterCobo": {
     "message": "https://support.cobo.com/hc/zh-cn/articles/360061649173"

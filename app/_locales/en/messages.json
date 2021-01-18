@@ -15,7 +15,7 @@
     "message": "Swith Account"
   },
   "welcomeCobo": {
-    "message": "Welcome to MetaMask for Cobo Vault (POC Beta)"
+    "message": "Welcome to MetaMask PoC for Cobo Vault (Beta)"
   },
   "metamaskDescriptionCobo": {
     "message": "You must disable ALL other instances of MetaMask on ALL open browsers when using MetaMask for Cobo Vault. If you have another instance running, it will interfere with requests to your Cobo Vault and you will get unexpected behavior."
@@ -30,7 +30,7 @@
     "message": "1. Open Cobo Vault "
   },
   "syncStep2": {
-    "message": "2. Select watch-only wallet is “MetaMask for Cobo Vault (POC Beta)”"
+    "message": "2. Select watch-only wallet is “MetaMask for Cobo Vault”"
   },
   "syncStep3": {
     "message": "3. Click “Scan Cobo Vault” button and scan the QR Code displays on Cobo Vault"
@@ -72,7 +72,7 @@
     "message": "All Done"
   },
   "metamaskVersionCobo": {
-    "message": "MetaMask for Cobo Vault (POC Beta)"
+    "message": "MetaMask PoC for Cobo Vault (Beta)"
   },
   "supportCenterCobo": {
     "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
