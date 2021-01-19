@@ -57,7 +57,6 @@ export default function AccountOptionsMenu({ anchorElement, onClose }) {
   const selectedIdentity = useSelector(getSelectedIdentity)
 
   const { address } = selectedIdentity
-  const isRemovable = keyring.type !== 'HD Key Tree'
 
   return (
     <Menu
@@ -118,23 +117,6 @@ export default function AccountOptionsMenu({ anchorElement, onClose }) {
       >
         {t('connectedSites')}
       </MenuItem>
-      {isRemovable ? (
-        <MenuItem
-          data-testid="account-options-menu__remove-account"
-          onClick={() => {
-            dispatch(
-              showModal({
-                name: 'CONFIRM_REMOVE_ACCOUNT',
-                identity: selectedIdentity,
-              }),
-            )
-            onClose()
-          }}
-          iconClassName="fas fa-trash-alt"
-        >
-          {t('removeAccount')}
-        </MenuItem>
-      ) : null}
     </Menu>
   )
 }
