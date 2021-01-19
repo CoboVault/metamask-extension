@@ -5,14 +5,15 @@ import Mascot from '../../../components/ui/mascot'
 import Button from '../../../components/ui/button'
 import {
   INITIALIZE_CREATE_NEW_VAULT_ROUTE,
-  INITIALIZE_CREATE_PASSWORD_ROUTE,
-} from '../../../helpers/constants/routes'
+  INITIALIZE_CREATE_PASSWORD_ROUTE, INITIALIZE_METAMETRICS_OPT_IN_ROUTE
+} from "../../../helpers/constants/routes";
 
 export default class Welcome extends PureComponent {
   static propTypes = {
     history: PropTypes.object,
     participateInMetaMetrics: PropTypes.bool,
     welcomeScreenSeen: PropTypes.bool,
+    setFirstTimeFlowType: PropTypes.func,
   }
 
   static contextTypes = {
@@ -36,7 +37,8 @@ export default class Welcome extends PureComponent {
   }
 
   handleContinue = () => {
-    this.props.history.push(INITIALIZE_CREATE_NEW_VAULT_ROUTE)
+    this.props.setFirstTimeFlowType('import-cobovault')
+    this.props.history.push(INITIALIZE_METAMETRICS_OPT_IN_ROUTE)
   }
 
   render() {
