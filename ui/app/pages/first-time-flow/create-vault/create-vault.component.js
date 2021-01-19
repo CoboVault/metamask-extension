@@ -1,11 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Button from '../../../components/ui/button'
-import {
-  INITIALIZE_CREATE_COBO_VAULT_HINT,
-  INITIALIZE_METAMETRICS_OPT_IN_ROUTE,
-  INITIALIZE_SELECT_ACTION_ROUTE,
-} from '../../../helpers/constants/routes'
+import { INITIALIZE_CREATE_COBO_VAULT_HINT } from '../../../helpers/constants/routes'
 import TextField from '../../../components/ui/text-field'
 
 export default class CreateVault extends PureComponent {
@@ -108,6 +104,7 @@ export default class CreateVault extends PureComponent {
           name: 'Submit Password',
         },
       })
+      this.props.setFirstTimeFlowType('import-cobovault')
       history.push(INITIALIZE_CREATE_COBO_VAULT_HINT)
     } catch (error) {
       this.setState({ passwordError: error.message })

@@ -37,7 +37,6 @@ export default class Welcome extends PureComponent {
   }
 
   handleContinue = () => {
-    this.props.setFirstTimeFlowType('import-cobovault')
     this.props.history.push(INITIALIZE_METAMETRICS_OPT_IN_ROUTE)
   }
 
