@@ -4,14 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import { I18nContext } from '../../../contexts/i18n'
-import { useNewMetricEvent } from '../../../hooks/useMetricEvent'
-import { MetaMetricsContext } from '../../../contexts/metametrics.new'
-import { getCurrentCurrency, getUSDConversionRate } from '../../../selectors'
 import {
-  getUsedQuote,
   getFetchParams,
-  getApproveTxParams,
-  getUsedSwapsGasPrice,
   fetchQuotesAndSetQuoteState,
   navigateBackToBuildQuote,
   prepareForRetryGetQuotes,
@@ -29,7 +23,6 @@ import {
 } from '../../../helpers/constants/swaps'
 import { ASSET_ROUTE, DEFAULT_ROUTE } from '../../../helpers/constants/routes'
 
-import { getRenderableNetworkFeesForQuote } from '../swaps.util'
 import SwapsFooter from '../swaps-footer'
 import SwapFailureIcon from './swap-failure-icon'
 import SwapSuccessIcon from './swap-success-icon'
@@ -48,52 +41,16 @@ export default function AwaitingSwap({
   maxSlippage,
 }) {
   const t = useContext(I18nContext)
-  const metaMetricsEvent = useContext(MetaMetricsContext)
   const history = useHistory()
   const dispatch = useDispatch()
   const animationEventEmitter = useRef(new EventEmitter())
 
   const fetchParams = useSelector(getFetchParams)
-  const { destinationTokenInfo, sourceTokenInfo } = fetchParams?.metaData || {}
-  const usedQuote = useSelector(getUsedQuote)
-  const approveTxParams = useSelector(getApproveTxParams)
-  const swapsGasPrice = useSelector(getUsedSwapsGasPrice)
-  const currentCurrency = useSelector(getCurrentCurrency)
-  const usdConversionRate = useSelector(getUSDConversionRate)
+  const { destinationTokenInfo } = fetchParams?.metaData || {}
 
   const [trackedQuotesExpiredEvent, setTrackedQuotesExpiredEvent] = useState(
     false,
   )
-
-  let feeinUnformattedFiat
-
-  if (usedQuote && swapsGasPrice) {
-    const renderableNetworkFees = getRenderableNetworkFeesForQuote(
-      usedQuote.gasEstimateWithRefund || usedQuote.averageGas,
-      approveTxParams?.gas || '0x0',
-      swapsGasPrice,
-      currentCurrency,
-      usdConversionRate,
-      usedQuote?.trade?.value,
-      sourceTokenInfo?.symbol,
-      usedQuote.sourceAmount,
-    )
-    feeinUnformattedFiat = renderableNetworkFees.rawNetworkFees
-  }
-
-  const quotesExpiredEvent = useNewMetricEvent({
-    event: 'Quotes Timed Out',
-    sensitiveProperties: {
-      token_from: sourceTokenInfo?.symbol,
-      token_from_amount: fetchParams?.value,
-      token_to: destinationTokenInfo?.symbol,
-      request_type: fetchParams?.balanceError ? 'Quote' : 'Order',
-      slippage: fetchParams?.slippage,
-      custom_slippage: fetchParams?.slippage === 2,
-      gas_fees: feeinUnformattedFiat,
-    },
-    category: 'swaps',
-  })
 
   const blockExplorerUrl =
     txHash && getBlockExplorerUrlForTx(networkId, txHash, rpcPrefs)
@@ -129,7 +86,6 @@ export default function AwaitingSwap({
 
     if (!trackedQuotesExpiredEvent) {
       setTrackedQuotesExpiredEvent(true)
-      quotesExpiredEvent()
     }
   } else if (errorKey === ERROR_FETCHING_QUOTES) {
     headerText = t('swapFetchingQuotesErrorTitle')
@@ -204,12 +160,7 @@ export default function AwaitingSwap({
           } else if (errorKey === QUOTES_EXPIRED_ERROR) {
             dispatch(prepareForRetryGetQuotes())
             await dispatch(
-              fetchQuotesAndSetQuoteState(
-                history,
-                inputValue,
-                maxSlippage,
-                metaMetricsEvent,
-              ),
+              fetchQuotesAndSetQuoteState(history, inputValue, maxSlippage),
             )
           } else if (errorKey) {
             await dispatch(navigateBackToBuildQuote(history))

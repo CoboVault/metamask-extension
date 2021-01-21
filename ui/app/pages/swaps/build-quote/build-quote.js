@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import classnames from 'classnames'
 import { uniqBy } from 'lodash'
 import { useHistory } from 'react-router-dom'
-import { MetaMetricsContext } from '../../../contexts/metametrics.new'
 import { useTokensToSearch } from '../../../hooks/useTokensToSearch'
 import { useEqualityCheck } from '../../../hooks/useEqualityCheck'
 import { useSwapsEthToken } from '../../../hooks/useSwapsEthToken'
@@ -60,7 +59,6 @@ export default function BuildQuote({
   const t = useContext(I18nContext)
   const dispatch = useDispatch()
   const history = useHistory()
-  const metaMetricsEvent = useContext(MetaMetricsContext)
 
   const [fetchedTokenExchangeRate, setFetchedTokenExchangeRate] = useState(
     undefined,
@@ -402,12 +400,7 @@ export default function BuildQuote({
       <SwapsFooter
         onSubmit={() => {
           dispatch(
-            fetchQuotesAndSetQuoteState(
-              history,
-              inputValue,
-              maxSlippage,
-              metaMetricsEvent,
-            ),
+            fetchQuotesAndSetQuoteState(history, inputValue, maxSlippage),
           )
         }}
         submitText={t('swapGetQuotes')}

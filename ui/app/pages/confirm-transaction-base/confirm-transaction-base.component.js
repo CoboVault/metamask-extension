@@ -18,10 +18,7 @@ import { PRIMARY, SECONDARY } from '../../helpers/constants/common'
 import { hexToDecimal } from '../../helpers/utils/conversions.util'
 import AdvancedGasInputs from '../../components/app/gas-customization/advanced-gas-inputs'
 import TextField from '../../components/ui/text-field'
-import {
-  TRANSACTION_CATEGORIES,
-  TRANSACTION_STATUSES,
-} from '../../../../shared/constants/transaction'
+import { TRANSACTION_STATUSES } from '../../../../shared/constants/transaction'
 
 export default class ConfirmTransactionBase extends Component {
   static contextTypes = {
@@ -66,7 +63,6 @@ export default class ConfirmTransactionBase extends Component {
     updateGasAndCalculate: PropTypes.func,
     customGas: PropTypes.object,
     // Component props
-    actionKey: PropTypes.string,
     contentComponent: PropTypes.node,
     dataComponent: PropTypes.node,
     detailsComponent: PropTypes.node,
@@ -85,8 +81,6 @@ export default class ConfirmTransactionBase extends Component {
     onEdit: PropTypes.func,
     onEditGas: PropTypes.func,
     onSubmit: PropTypes.func,
-    setMetaMetricsSendCount: PropTypes.func,
-    metaMetricsSendCount: PropTypes.number,
     subtitle: PropTypes.string,
     subtitleComponent: PropTypes.node,
     summaryComponent: PropTypes.node,
@@ -210,13 +204,7 @@ export default class ConfirmTransactionBase extends Component {
   }
 
   handleEditGas() {
-    const {
-      onEditGas,
-      showCustomizeGasModal,
-      actionKey,
-      txData: { origin },
-      methodData = {},
-    } = this.props
+    const { onEditGas, showCustomizeGasModal } = this.props
 
     if (onEditGas) {
       onEditGas()
@@ -385,15 +373,7 @@ export default class ConfirmTransactionBase extends Component {
   }
 
   handleEdit() {
-    const {
-      txData,
-      tokenData,
-      tokenProps,
-      onEdit,
-      actionKey,
-      txData: { origin },
-      methodData = {},
-    } = this.props
+    const { txData, tokenData, tokenProps, onEdit } = this.props
 
     onEdit({ txData, tokenData, tokenProps })
   }
@@ -427,9 +407,6 @@ export default class ConfirmTransactionBase extends Component {
       history,
       mostRecentOverviewPage,
       clearConfirmTransaction,
-      actionKey,
-      txData: { origin },
-      methodData = {},
       updateCustomNonce,
     } = this.props
 
@@ -447,17 +424,10 @@ export default class ConfirmTransactionBase extends Component {
 
   handleSubmit() {
     const {
-      txData: { origin },
       sendTransaction,
       clearConfirmTransaction,
       txData,
-      history,
       onSubmit,
-      actionKey,
-      mostRecentOverviewPage,
-      metaMetricsSendCount = 0,
-      setMetaMetricsSendCount,
-      methodData = {},
       updateCustomNonce,
     } = this.props
     const { submitting } = this.state
@@ -474,29 +444,27 @@ export default class ConfirmTransactionBase extends Component {
       () => {
         this._removeBeforeUnload()
 
-        setMetaMetricsSendCount(metaMetricsSendCount + 1).then(() => {
-          if (onSubmit) {
-            Promise.resolve(onSubmit(txData)).then(() => {
+        if (onSubmit) {
+          Promise.resolve(onSubmit(txData)).then(() => {
+            this.setState({
+              submitting: false,
+            })
+            updateCustomNonce('')
+          })
+        } else {
+          sendTransaction(txData)
+            .then(() => {
+              updateCustomNonce('')
+              clearConfirmTransaction()
+            })
+            .catch((error) => {
               this.setState({
                 submitting: false,
+                submitError: error.message,
               })
               updateCustomNonce('')
             })
-          } else {
-            sendTransaction(txData)
-              .then(() => {
-                updateCustomNonce('')
-                clearConfirmTransaction()
-              })
-              .catch((error) => {
-                this.setState({
-                  submitting: false,
-                  submitError: error.message,
-                })
-                updateCustomNonce('')
-              })
-          }
-        })
+        }
       },
     )
   }
@@ -570,7 +538,7 @@ export default class ConfirmTransactionBase extends Component {
   }
 
   _beforeUnload = () => {
-    const { txData: { origin, id } = {}, cancelTransaction } = this.props
+    const { txData: { id } = {}, cancelTransaction } = this.props
     cancelTransaction({ id })
   }
 
@@ -581,12 +549,7 @@ export default class ConfirmTransactionBase extends Component {
   }
 
   componentDidMount() {
-    const {
-      toAddress,
-      txData: { origin } = {},
-      getNextNonce,
-      tryReverseResolveAddress,
-    } = this.props
+    const { toAddress, getNextNonce, tryReverseResolveAddress } = this.props
 
     if (getEnvironmentType() === ENVIRONMENT_TYPE_NOTIFICATION) {
       window.addEventListener('beforeunload', this._beforeUnload)

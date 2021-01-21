@@ -8,18 +8,16 @@ import {
 import Welcome from './welcome.component'
 
 const mapStateToProps = ({ metamask }) => {
-  const { welcomeScreenSeen, participateInMetaMetrics } = metamask
+  const { welcomeScreenSeen } = metamask
 
   return {
     welcomeScreenSeen,
-    participateInMetaMetrics,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     closeWelcomeScreen: () => dispatch(closeWelcomeScreen()),
-    setFirstTimeFlowType: (type) => dispatch(setFirstTimeFlowType(type)),
   }
 }
 

@@ -1,88 +1,4 @@
 {
-  "scanWithCoboVault": {
-    "message": "使用 Cobo 金库扫描二维码"
-  },
-  "getSignatureFromCoboVault": {
-    "message": "扫描"
-  },
-  "scanCoboDescription": {
-    "message": "Cobo 金库对交易签完名后，点击下方“扫描 Cobo 金库二维码”广播该交易"
-  },
-  "cancelTransaction": {
-    "message": "拒绝"
-  },
-  "switchAccount": {
-    "message": "切换账户"
-  },
-  "welcomeCobo": {
-    "message": "欢迎使用 MetaMask PoC for Cobo Vault (Beta 版本)"
-  },
-  "metamaskDescriptionCobo": {
-    "message": "在使用MetaMask for Cobo Vault前，您需先卸载其他所有的MetaMask。同时运行可能会发生冲突。"
-  },
-  "getStartedCobo": {
-    "message": "开始使用"
-  },
-  "syncCoboTitle": {
-    "message": "同步 Cobo 金库"
-  },
-  "syncStep1": {
-    "message": "1. 打开 Cobo 金库"
-  },
-  "syncStep2": {
-    "message": "2. 选择观察钱包为 “MetaMask for Cobo Vault”"
-  },
-  "syncStep3": {
-    "message": "3. 点击下方 “扫描 Cobo 金库” 按钮后扫描 Cobo 金库上展示的钱包二维码"
-  },
-  "syncStep4": {
-    "message": "4. 扫描完成后进入观察钱包"
-  },
-  "syncSubMessage": {
-    "message": "当前MetaMask for Cobo Vault仅支持同步一个 Cobo 金库，若您想切换至另一个 Cobo 金库，您需要卸载重装 MetaMask For Cobo Vault，然后再进行同步。"
-  },
-  "syncLinkDescription": {
-    "message": "点击此处查看详细教程"
-  },
-  "syncLink": {
-    "message": "https://support.cobo.com/hc/zh-cn/articles/360061649173"
-  },
-  "syncCobo": {
-    "message": "扫描 Cobo 金库"
-  },
-  "congratulationsCobo": {
-    "message": "恭喜"
-  },
-  "endOfFlowMessage1Cobo": {
-    "message": "您已完成 Cobo 金库的同步，点击下方按钮后进入 ETH 账户。"
-  },
-  "endOfFlowMessage2Cobo": {
-    "message": "安全保存小技巧"
-  },
-  "endOfFlowMessage3Cobo": {
-    "message": "请您务必妥善保管好助记词，不要透露给任何人。"
-  },
-  "endOfFlowMessage4Cobo": {
-    "message": "谨防网络钓鱼！Cobo 在任何情况下都不会询问您的助记词。"
-  },
-  "endOfFlowMessage5Cobo": {
-    "message": "如有任何问题，您可邮件联系我们：support@cobo.com。"
-  },
-  "endOfFlowMessage6Cobo": {
-    "message": "全部完成"
-  },
-  "metamaskVersionCobo": {
-    "message": "MetaMask PoC for Cobo Vault (Beta)"
-  },
-  "supportCenterCobo": {
-    "message": "https://support.cobo.com/hc/zh-cn/articles/360061649173"
-  },
-  "websiteCobo": {
-    "message": "https://cobo.com/hardware-wallet/cobo-vault?locale=zh"
-  },
-  "contactUsCoboLink": {
-    "message": "https://support.cobo.com/hc/zh-cn/requests/new\n"
-  },
   "about": {
     "message": "关于"
   },
@@ -242,6 +158,9 @@
   "cancel": {
     "message": "取消"
   },
+  "cancelTransaction": {
+    "message": "拒绝"
+  },
   "cancellationGasFee": {
     "message": "取消天然气费"
   },
@@ -275,6 +194,9 @@
   "congratulations": {
     "message": "恭喜"
   },
+  "congratulationsCobo": {
+    "message": "恭喜"
+  },
   "connect": {
     "message": "连接"
   },
@@ -298,6 +220,9 @@
   },
   "connectingToRopsten": {
     "message": "正在连接到Ropsten测试网络"
+  },
+  "contactUsCoboLink": {
+    "message": "https://support.cobo.com/hc/zh-cn/requests/new\n"
   },
   "continueToWyre": {
     "message": "继续前往 Wyre"
@@ -419,20 +344,38 @@
   "endOfFlowMessage10": {
     "message": "全部完成"
   },
+  "endOfFlowMessage1Cobo": {
+    "message": "您已完成 Cobo 金库的同步，点击下方按钮后进入 ETH 账户。"
+  },
   "endOfFlowMessage2": {
+    "message": "安全保存小技巧"
+  },
+  "endOfFlowMessage2Cobo": {
     "message": "安全保存小技巧"
   },
   "endOfFlowMessage3": {
     "message": "在多处保存备份数据。"
   },
+  "endOfFlowMessage3Cobo": {
+    "message": "请您务必妥善保管好助记词，不要透露给任何人。"
+  },
   "endOfFlowMessage4": {
     "message": "绝不向任何分享该密语。"
+  },
+  "endOfFlowMessage4Cobo": {
+    "message": "谨防网络钓鱼！Cobo 在任何情况下都不会询问您的助记词。"
   },
   "endOfFlowMessage5": {
     "message": "谨防网络钓鱼！MetaMask 绝不会主动要求您提供个人种子密语。"
   },
+  "endOfFlowMessage5Cobo": {
+    "message": "如有任何问题，您可邮件联系我们：support@cobo.com。"
+  },
   "endOfFlowMessage6": {
     "message": "如果您需要再次备份个人种子密语，请通过设置 -> 安全选项完成该操作。"
+  },
+  "endOfFlowMessage6Cobo": {
+    "message": "全部完成"
   },
   "endOfFlowMessage7": {
     "message": "如果您仍存有疑问或发现任何可疑的地方，请发送电子邮件至 support@metamask.io 进行咨询。"
@@ -527,7 +470,13 @@
   "getHelp": {
     "message": "获取帮助。"
   },
+  "getSignatureFromCoboVault": {
+    "message": "扫描"
+  },
   "getStarted": {
+    "message": "开始使用"
+  },
+  "getStartedCobo": {
     "message": "开始使用"
   },
   "goerli": {
@@ -678,8 +627,20 @@
   "metamaskDescription": {
     "message": "MetaMask is a secure identity vault for Ethereum."
   },
+  "metamaskDescriptionCobo": {
+    "message": "在使用MetaMask for Cobo Vault前，您需先卸载其他所有的MetaMask。同时运行可能会发生冲突。"
+  },
   "metamaskVersion": {
     "message": "MetaMask 版本"
+  },
+  "metamaskVersionCobo": {
+    "message": "MetaMask PoC for Cobo Vault (Beta)"
+  },
+  "mismatchedSignId": {
+    "message": "非当前交易的二维码，请检查后重新扫描。"
+  },
+  "mismatchedSignIdTitle": {
+    "message": "解析失败"
   },
   "mobileSyncText": {
     "message": "请输入密码确认个人身份！"
@@ -949,11 +910,17 @@
   "saveAsCsvFile": {
     "message": "另存为CSV文件"
   },
+  "scanCoboDescription": {
+    "message": "Cobo 金库对交易签完名后，点击下方“扫描 Cobo 金库二维码”广播该交易"
+  },
   "scanInstructions": {
     "message": "请将二维码置于镜头前"
   },
   "scanQrCode": {
     "message": "扫描二维码"
+  },
+  "scanWithCoboVault": {
+    "message": "使用 Cobo 金库扫描二维码"
   },
   "search": {
     "message": "搜索"
@@ -1123,6 +1090,12 @@
   "supportCenter": {
     "message": "访问我们的支持中心"
   },
+  "supportCenterCobo": {
+    "message": "https://support.cobo.com/hc/zh-cn/articles/360061649173"
+  },
+  "switchAccount": {
+    "message": "切换账户"
+  },
   "switchNetworks": {
     "message": "切换网络"
   },
@@ -1131,6 +1104,33 @@
   },
   "symbolBetweenZeroTwelve": {
     "message": "符号不得超过11个字符。"
+  },
+  "syncCobo": {
+    "message": "扫描 Cobo 金库"
+  },
+  "syncCoboTitle": {
+    "message": "同步 Cobo 金库"
+  },
+  "syncLink": {
+    "message": "https://support.cobo.com/hc/zh-cn/articles/360061649173"
+  },
+  "syncLinkDescription": {
+    "message": "点击此处查看详细教程"
+  },
+  "syncStep1": {
+    "message": "1. 打开 Cobo 金库"
+  },
+  "syncStep2": {
+    "message": "2. 选择观察钱包为 “MetaMask for Cobo Vault”"
+  },
+  "syncStep3": {
+    "message": "3. 点击下方 “扫描 Cobo 金库” 按钮后扫描 Cobo 金库上展示的钱包二维码"
+  },
+  "syncStep4": {
+    "message": "4. 扫描完成后进入观察钱包"
+  },
+  "syncSubMessage": {
+    "message": "当前MetaMask for Cobo Vault仅支持同步一个 Cobo 金库，若您想切换至另一个 Cobo 金库，您需要卸载重装 MetaMask For Cobo Vault，然后再进行同步。"
   },
   "syncWithMobile": {
     "message": "使用移动设备进行同步"
@@ -1250,12 +1250,6 @@
   "unknown": {
     "message": "未知"
   },
-  "mismatchedSignIdTitle": {
-    "message": "解析失败"
-  },
-  "mismatchedSignId": {
-    "message": "非当前交易的二维码，请检查后重新扫描。"
-  },
   "unknownCameraError": {
     "message": "非法二维码，请重试。"
   },
@@ -1304,11 +1298,17 @@
   "walletSeed": {
     "message": "钱包助记词"
   },
+  "websiteCobo": {
+    "message": "https://cobo.com/hardware-wallet/cobo-vault?locale=zh"
+  },
   "welcome": {
     "message": "欢迎使用 MetaMask 测试版"
   },
   "welcomeBack": {
     "message": "欢迎回来！"
+  },
+  "welcomeCobo": {
+    "message": "欢迎使用 MetaMask PoC for Cobo Vault (Beta 版本)"
   },
   "writePhrase": {
     "message": "请将该密语记录在纸上，并保存在安全的地方。如果希望提升信息安全性，请将信息记录在多张纸上，并分别保存在 2 - 3 个不同的地方。"

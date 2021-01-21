@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import PageContainer from '../../../components/ui/page-container'
 import { Tabs, Tab } from '../../../components/ui/tabs'
-import { calcGasTotal } from '../../send/send.utils'
-import { sumHexWEIsToUnformattedFiat } from '../../../helpers/utils/conversions.util'
 import AdvancedGasInputs from '../../../components/app/gas-customization/advanced-gas-inputs'
 import BasicTabContent from '../../../components/app/gas-customization/gas-modal-page-container/basic-tab-content'
 import { GAS_ESTIMATE_TYPES } from '../../../helpers/constants/common'
@@ -34,8 +32,6 @@ export default class GasModalPageContainer extends Component {
     showCustomPriceTooLowWarning: PropTypes.bool,
     disableSave: PropTypes.bool,
     customGasLimitMessage: PropTypes.string,
-    customTotalSupplement: PropTypes.string,
-    usdConversionRate: PropTypes.number,
     customGasPrice: PropTypes.string,
     customGasLimit: PropTypes.string,
     setSwapsCustomizationModalPrice: PropTypes.func,
@@ -241,20 +237,6 @@ export default class GasModalPageContainer extends Component {
           onCancel={() => cancelAndClose()}
           onClose={() => cancelAndClose()}
           onSubmit={() => {
-            const newSwapGasTotal = calcGasTotal(customGasLimit, customGasPrice)
-
-            this.context.trackEvent({
-              event: 'Gas Fees Changed',
-              category: 'swaps',
-              properties: {
-                speed_set: this.state.gasSpeedType,
-                gas_fees: sumHexWEIsToUnformattedFiat(
-                  [newSwapGasTotal, this.props.customTotalSupplement],
-                  'usd',
-                  this.props.usdConversionRate,
-                )?.slice(1),
-              },
-            })
             onSubmit(customGasLimit, customGasPrice)
           }}
           submitText={this.context.t('save')}

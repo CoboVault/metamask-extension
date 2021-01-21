@@ -12,8 +12,6 @@ export default class SecurityTab extends PureComponent {
   static propTypes = {
     warning: PropTypes.string,
     history: PropTypes.object,
-    participateInMetaMetrics: PropTypes.bool.isRequired,
-    setParticipateInMetaMetrics: PropTypes.func.isRequired,
     showIncomingTransactions: PropTypes.bool.isRequired,
     setShowIncomingTransactionsFeatureFlag: PropTypes.func.isRequired,
     setUsePhishDetect: PropTypes.func.isRequired,
@@ -41,32 +39,6 @@ export default class SecurityTab extends PureComponent {
             >
               {t('revealSeedWords')}
             </Button>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  renderMetaMetricsOptIn() {
-    const { t } = this.context
-    const { participateInMetaMetrics, setParticipateInMetaMetrics } = this.props
-
-    return (
-      <div className="settings-page__content-row">
-        <div className="settings-page__content-item">
-          <span>{t('participateInMetaMetrics')}</span>
-          <div className="settings-page__content-description">
-            <span>{t('participateInMetaMetricsDescription')}</span>
-          </div>
-        </div>
-        <div className="settings-page__content-item">
-          <div className="settings-page__content-item-col">
-            <ToggleButton
-              value={participateInMetaMetrics}
-              onToggle={(value) => setParticipateInMetaMetrics(!value)}
-              offLabel={t('off')}
-              onLabel={t('on')}
-            />
           </div>
         </div>
       </div>
@@ -139,7 +111,6 @@ export default class SecurityTab extends PureComponent {
         {this.renderSeedWords()}
         {this.renderIncomingTransactionsOptIn()}
         {this.renderPhishingDetectionToggle()}
-        {this.renderMetaMetricsOptIn()}
       </div>
     )
   }

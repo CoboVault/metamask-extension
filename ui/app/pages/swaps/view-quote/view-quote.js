@@ -7,9 +7,7 @@ import classnames from 'classnames'
 import { I18nContext } from '../../../contexts/i18n'
 import SelectQuotePopover from '../select-quote-popover'
 import { useEqualityCheck } from '../../../hooks/useEqualityCheck'
-import { useNewMetricEvent } from '../../../hooks/useMetricEvent'
 import { useSwapsEthToken } from '../../../hooks/useSwapsEthToken'
-import { MetaMetricsContext } from '../../../contexts/metametrics.new'
 import FeeCard from '../fee-card'
 import {
   FALLBACK_GAS_MULTIPLIER,
@@ -80,7 +78,6 @@ export default function ViewQuote() {
   const history = useHistory()
   const dispatch = useDispatch()
   const t = useContext(I18nContext)
-  const metaMetricsEvent = useContext(MetaMetricsContext)
 
   const [dispatchedSafeRefetch, setDispatchedSafeRefetch] = useState(false)
   const [selectQuotePopoverShown, setSelectQuotePopoverShown] = useState(false)
@@ -296,59 +293,7 @@ export default function ViewQuote() {
 
   const numberOfQuotes = Object.values(quotes).length
   const bestQuoteReviewedEventSent = useRef()
-  const eventObjectBase = {
-    token_from: sourceTokenSymbol,
-    token_from_amount: sourceTokenValue,
-    token_to: destinationTokenSymbol,
-    token_to_amount: destinationTokenValue,
-    request_type: fetchParams?.balanceError,
-    slippage: fetchParams?.slippage,
-    custom_slippage: fetchParams?.slippage !== 2,
-    response_time: fetchParams?.responseTime,
-    best_quote_source: topQuote?.aggregator,
-    available_quotes: numberOfQuotes,
-  }
 
-  const allAvailableQuotesOpened = useNewMetricEvent({
-    event: 'All Available Quotes Opened',
-    category: 'swaps',
-    sensitiveProperties: {
-      ...eventObjectBase,
-      other_quote_selected: usedQuote?.aggregator !== topQuote?.aggregator,
-      other_quote_selected_source:
-        usedQuote?.aggregator === topQuote?.aggregator
-          ? null
-          : usedQuote?.aggregator,
-    },
-  })
-  const quoteDetailsOpened = useNewMetricEvent({
-    event: 'Quote Details Opened',
-    category: 'swaps',
-    sensitiveProperties: {
-      ...eventObjectBase,
-      other_quote_selected: usedQuote?.aggregator !== topQuote?.aggregator,
-      other_quote_selected_source:
-        usedQuote?.aggregator === topQuote?.aggregator
-          ? null
-          : usedQuote?.aggregator,
-    },
-  })
-  const editSpendLimitOpened = useNewMetricEvent({
-    event: 'Edit Spend Limit Opened',
-    category: 'swaps',
-    sensitiveProperties: {
-      ...eventObjectBase,
-      custom_spend_limit_set: originalApproveAmount === approveAmount,
-      custom_spend_limit_amount:
-        originalApproveAmount === approveAmount ? null : approveAmount,
-    },
-  })
-
-  const bestQuoteReviewedEvent = useNewMetricEvent({
-    event: 'Best Quote Reviewed',
-    category: 'swaps',
-    sensitiveProperties: { ...eventObjectBase, network_fees: feeInFiat },
-  })
   useEffect(() => {
     if (
       !bestQuoteReviewedEventSent.current &&
@@ -364,7 +309,6 @@ export default function ViewQuote() {
       ].every((dep) => dep !== null && dep !== undefined)
     ) {
       bestQuoteReviewedEventSent.current = true
-      bestQuoteReviewedEvent()
     }
   }, [
     sourceTokenSymbol,
@@ -375,13 +319,11 @@ export default function ViewQuote() {
     topQuote,
     numberOfQuotes,
     feeInFiat,
-    bestQuoteReviewedEvent,
   ])
 
   const metaMaskFee = usedQuote.fee
 
   const onFeeCardTokenApprovalClick = () => {
-    editSpendLimitOpened()
     dispatch(
       showModal({
         name: 'EDIT_APPROVAL_PERMISSION',
@@ -494,7 +436,6 @@ export default function ViewQuote() {
             onSubmit={(aggId) => dispatch(swapsQuoteSelected(aggId))}
             swapToSymbol={destinationTokenSymbol}
             initialAggId={usedQuote.aggregator}
-            onQuoteDetailsIsOpened={quoteDetailsOpened}
           />
         )}
         <div
@@ -557,7 +498,6 @@ export default function ViewQuote() {
             isBestQuote={isBestQuote}
             numberOfQuotes={Object.values(quotes).length}
             onQuotesClick={() => {
-              allAvailableQuotesOpened()
               setSelectQuotePopoverShown(true)
             }}
             tokenConversionRate={
@@ -571,7 +511,7 @@ export default function ViewQuote() {
       <SwapsFooter
         onSubmit={() => {
           if (!balanceError) {
-            dispatch(signAndSendTransactions(history, metaMetricsEvent))
+            dispatch(signAndSendTransactions(history))
           } else if (destinationToken.symbol === 'ETH') {
             history.push(DEFAULT_ROUTE)
           } else {

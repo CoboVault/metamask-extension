@@ -11,10 +11,6 @@ import {
   SEND_ROUTE,
   BUILD_QUOTE_ROUTE,
 } from '../../../helpers/constants/routes'
-import {
-  useMetricEvent,
-  useNewMetricEvent,
-} from '../../../hooks/useMetricEvent'
 import { useTokenTracker } from '../../../hooks/useTokenTracker'
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount'
 import { updateSendToken } from '../../../store/actions'
@@ -26,7 +22,7 @@ import {
   getAssetImages,
   getCurrentKeyring,
   getCurrentNetworkId,
-} from '../../../selectors/selectors'
+} from '../../../selectors'
 import { MAINNET_NETWORK_ID } from '../../../../../app/scripts/controllers/network/enums'
 
 import SwapIcon from '../../ui/icon/swap-icon.component'
@@ -38,13 +34,6 @@ import WalletOverview from './wallet-overview'
 const TokenOverview = ({ className, token }) => {
   const dispatch = useDispatch()
   const t = useContext(I18nContext)
-  const sendTokenEvent = useMetricEvent({
-    eventOpts: {
-      category: 'Navigation',
-      action: 'Home',
-      name: 'Clicked Send: Token',
-    },
-  })
   const history = useHistory()
   const assetImages = useSelector(getAssetImages)
 
@@ -59,11 +48,6 @@ const TokenOverview = ({ className, token }) => {
     token.symbol,
   )
   const networkId = useSelector(getCurrentNetworkId)
-  const enteredSwapsEvent = useNewMetricEvent({
-    event: 'Swaps Opened',
-    properties: { source: 'Token View', active_currency: token.symbol },
-    category: 'swaps',
-  })
   const swapsEnabled = useSelector(getSwapsFeatureLiveness)
 
   return (
@@ -89,7 +73,6 @@ const TokenOverview = ({ className, token }) => {
           <IconButton
             className="token-overview__button"
             onClick={() => {
-              sendTokenEvent()
               dispatch(updateSendToken(token))
               history.push(SEND_ROUTE)
             }}
@@ -104,7 +87,6 @@ const TokenOverview = ({ className, token }) => {
               Icon={SwapIcon}
               onClick={() => {
                 if (networkId === MAINNET_NETWORK_ID) {
-                  enteredSwapsEvent()
                   dispatch(
                     setSwapsFromToken({
                       ...token,

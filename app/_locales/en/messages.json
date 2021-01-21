@@ -1,88 +1,4 @@
 {
-  "scanWithCoboVault": {
-    "message": "Scan using Cobo Vault"
-  },
-  "getSignatureFromCoboVault": {
-    "message": "Scan"
-  },
-  "scanCoboDescription": {
-    "message": "After Cobo Vault signed the transaction, click Scan Cobo Vault to broadcast the transaction."
-  },
-  "cancelTransaction": {
-    "message": "Cancel"
-  },
-  "switchAccount": {
-    "message": "Swith Account"
-  },
-  "welcomeCobo": {
-    "message": "Welcome to MetaMask PoC for Cobo Vault (Beta)"
-  },
-  "metamaskDescriptionCobo": {
-    "message": "You must disable ALL other instances of MetaMask on ALL open browsers when using MetaMask for Cobo Vault. If you have another instance running, it will interfere with requests to your Cobo Vault and you will get unexpected behavior."
-  },
-  "getStartedCobo": {
-    "message": "Get Started"
-  },
-  "syncCoboTitle": {
-    "message": "Sync Cobo Vault Hardware wallet"
-  },
-  "syncStep1": {
-    "message": "1. Open Cobo Vault "
-  },
-  "syncStep2": {
-    "message": "2. Select watch-only wallet is “MetaMask for Cobo Vault”"
-  },
-  "syncStep3": {
-    "message": "3. Click “Scan Cobo Vault” button and scan the QR Code displays on Cobo Vault"
-  },
-  "syncStep4": {
-    "message": "4. Enter watch-only wallet"
-  },
-  "syncSubMessage": {
-    "message": "If you wish to switch to another Cobo Vault, you must reinstall MetaMask for Cobo Vault and sync the Vault. (The current version only supports the synchronization of one Vault)"
-  },
-  "syncLinkDescription": {
-    "message": "Click here to view detailed tutorial"
-  },
-  "syncLink": {
-    "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
-  },
-  "syncCobo": {
-    "message": "Scan Cobo Vault"
-  },
-  "congratulationsCobo": {
-    "message": "Congratulations"
-  },
-  "endOfFlowMessage1Cobo": {
-    "message": "You have completed the sync of the Cobo Vault, click the button below to enter the ETH account."
-  },
-  "endOfFlowMessage2Cobo": {
-    "message": "Tips on storing safely"
-  },
-  "endOfFlowMessage3Cobo": {
-    "message": "Never share your recovery phrase with anyone."
-  },
-  "endOfFlowMessage4Cobo": {
-    "message": "Be careful of phishing! MetaMask for Cobo Vault will never spontaneously ask for your recovery phrase."
-  },
-  "endOfFlowMessage5Cobo": {
-    "message": "If you ever have questions or see something fishy, email support@cobo.com."
-  },
-  "endOfFlowMessage6Cobo": {
-    "message": "All Done"
-  },
-  "metamaskVersionCobo": {
-    "message": "MetaMask PoC for Cobo Vault (Beta)"
-  },
-  "supportCenterCobo": {
-    "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
-  },
-  "websiteCobo": {
-    "message": "https://cobo.com/hardware-wallet/cobo-vault?locale=en"
-  },
-  "contactUsCoboLink": {
-    "message": "https://support.cobo.com/hc/en-us/requests/new"
-  },
   "about": {
     "message": "About"
   },
@@ -329,6 +245,9 @@
   "cancel": {
     "message": "Cancel"
   },
+  "cancelTransaction": {
+    "message": "Cancel"
+  },
   "cancellationGasFee": {
     "message": "Cancellation Gas Fee"
   },
@@ -360,6 +279,9 @@
     "message": "Confirmed"
   },
   "congratulations": {
+    "message": "Congratulations"
+  },
+  "congratulationsCobo": {
     "message": "Congratulations"
   },
   "connect": {
@@ -441,6 +363,9 @@
   },
   "contactUs": {
     "message": "Contact us"
+  },
+  "contactUsCoboLink": {
+    "message": "https://support.cobo.com/hc/en-us/requests/new"
   },
   "contacts": {
     "message": "Contacts"
@@ -631,20 +556,38 @@
   "endOfFlowMessage10": {
     "message": "All Done"
   },
+  "endOfFlowMessage1Cobo": {
+    "message": "You have completed the sync of the Cobo Vault, click the button below to enter the ETH account."
+  },
   "endOfFlowMessage2": {
     "message": "Tips on storing it safely"
+  },
+  "endOfFlowMessage2Cobo": {
+    "message": "Tips on storing safely"
   },
   "endOfFlowMessage3": {
     "message": "Save a backup in multiple places."
   },
+  "endOfFlowMessage3Cobo": {
+    "message": "Never share your recovery phrase with anyone."
+  },
   "endOfFlowMessage4": {
     "message": "Never share the phrase with anyone."
+  },
+  "endOfFlowMessage4Cobo": {
+    "message": "Be careful of phishing! MetaMask for Cobo Vault will never spontaneously ask for your recovery phrase."
   },
   "endOfFlowMessage5": {
     "message": "Be careful of phishing! MetaMask will never spontaneously ask for your seed phrase."
   },
+  "endOfFlowMessage5Cobo": {
+    "message": "If you ever have questions or see something fishy, email support@cobo.com."
+  },
   "endOfFlowMessage6": {
     "message": "If you need to back up your seed phrase again, you can find it in Settings -> Security."
+  },
+  "endOfFlowMessage6Cobo": {
+    "message": "All Done"
   },
   "endOfFlowMessage7": {
     "message": "If you ever have questions or see something fishy, email support@metamask.io."
@@ -832,7 +775,13 @@
   "getHelp": {
     "message": "Get Help."
   },
+  "getSignatureFromCoboVault": {
+    "message": "Scan"
+  },
   "getStarted": {
+    "message": "Get Started"
+  },
+  "getStartedCobo": {
     "message": "Get Started"
   },
   "goerli": {
@@ -1046,11 +995,17 @@
   "metamaskDescription": {
     "message": "Connecting you to Ethereum and the Decentralized Web."
   },
+  "metamaskDescriptionCobo": {
+    "message": "You must disable ALL other instances of MetaMask on ALL open browsers when using MetaMask for Cobo Vault. If you have another instance running, it will interfere with requests to your Cobo Vault and you will get unexpected behavior."
+  },
   "metamaskSwapsOfflineDescription": {
     "message": "MetaMask Swaps is undergoing maintenance. Please check back later."
   },
   "metamaskVersion": {
     "message": "MetaMask Version"
+  },
+  "metamaskVersionCobo": {
+    "message": "MetaMask PoC for Cobo Vault (Beta)"
   },
   "metametricsCommitmentsAllowOptOut": {
     "message": "Always allow you to opt-out via Settings"
@@ -1082,6 +1037,12 @@
   },
   "metametricsOptInDescription": {
     "message": "MetaMask for Cobo Vault would like to gather usage data to better understand how our users interact with the extension. This data will be used to continually improve the usability and user experience of our product and the Ethereum ecosystem."
+  },
+  "mismatchedSignId": {
+    "message": "Not the QR code of the current transaction, please check and retry."
+  },
+  "mismatchedSignIdTitle": {
+    "message": "Read Error"
   },
   "mobileSyncText": {
     "message": "Please enter your password to confirm it's you!"
@@ -1433,11 +1394,17 @@
   "saveAsCsvFile": {
     "message": "Save as CSV File"
   },
+  "scanCoboDescription": {
+    "message": "After Cobo Vault signed the transaction, click Scan Cobo Vault to broadcast the transaction."
+  },
   "scanInstructions": {
     "message": "Place the QR code in front of your camera"
   },
   "scanQrCode": {
     "message": "Scan QR Code"
+  },
+  "scanWithCoboVault": {
+    "message": "Scan using Cobo Vault"
   },
   "scrollDown": {
     "message": "Scroll down"
@@ -1674,6 +1641,9 @@
   },
   "supportCenter": {
     "message": "Visit our Support Center"
+  },
+  "supportCenterCobo": {
+    "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
   },
   "swap": {
     "message": "Swap"
@@ -1958,6 +1928,9 @@
   "swapsViewInActivity": {
     "message": "View in activity"
   },
+  "switchAccount": {
+    "message": "Swith Account"
+  },
   "switchNetworks": {
     "message": "Switch Networks"
   },
@@ -1969,6 +1942,33 @@
   },
   "symbolBetweenZeroTwelve": {
     "message": "Symbol must be 11 characters or fewer."
+  },
+  "syncCobo": {
+    "message": "Scan Cobo Vault"
+  },
+  "syncCoboTitle": {
+    "message": "Sync Cobo Vault Hardware wallet"
+  },
+  "syncLink": {
+    "message": "https://support.cobo.com/hc/en-us/articles/360061649173"
+  },
+  "syncLinkDescription": {
+    "message": "Click here to view detailed tutorial"
+  },
+  "syncStep1": {
+    "message": "1. Open Cobo Vault "
+  },
+  "syncStep2": {
+    "message": "2. Select watch-only wallet is “MetaMask for Cobo Vault”"
+  },
+  "syncStep3": {
+    "message": "3. Click “Scan Cobo Vault” button and scan the QR Code displays on Cobo Vault"
+  },
+  "syncStep4": {
+    "message": "4. Enter watch-only wallet"
+  },
+  "syncSubMessage": {
+    "message": "If you wish to switch to another Cobo Vault, you must reinstall MetaMask for Cobo Vault and sync the Vault. (The current version only supports the synchronization of one Vault)"
   },
   "syncWithMobile": {
     "message": "Sync with mobile"
@@ -2118,12 +2118,6 @@
   "unknown": {
     "message": "Unknown"
   },
-  "mismatchedSignIdTitle": {
-    "message": "Read Error"
-  },
-  "mismatchedSignId": {
-    "message": "Not the QR code of the current transaction, please check and retry."
-  },
   "unknownCameraError": {
     "message": "Invalid Qr Code, please retry."
   },
@@ -2198,11 +2192,17 @@
     "message": "We noticed that the current website tried to use the removed window.web3 API. If the site appears to be broken, please click $1 for more information.",
     "description": "$1 is a clickable link."
   },
+  "websiteCobo": {
+    "message": "https://cobo.com/hardware-wallet/cobo-vault?locale=en"
+  },
   "welcome": {
     "message": "Welcome to MetaMask"
   },
   "welcomeBack": {
     "message": "Welcome Back!"
+  },
+  "welcomeCobo": {
+    "message": "Welcome to MetaMask PoC for Cobo Vault (Beta)"
   },
   "whatsThis": {
     "message": "What's this?"

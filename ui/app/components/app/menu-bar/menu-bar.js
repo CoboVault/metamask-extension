@@ -8,19 +8,11 @@ import { getEnvironmentType } from '../../../../../app/scripts/lib/util'
 import { ENVIRONMENT_TYPE_POPUP } from '../../../../../app/scripts/lib/enums'
 import { CONNECTED_ACCOUNTS_ROUTE } from '../../../helpers/constants/routes'
 import { useI18nContext } from '../../../hooks/useI18nContext'
-import { useMetricEvent } from '../../../hooks/useMetricEvent'
 import { getOriginOfCurrentTab } from '../../../selectors'
 import AccountOptionsMenu from './account-options-menu'
 
 export default function MenuBar() {
   const t = useI18nContext()
-  const openAccountOptionsEvent = useMetricEvent({
-    eventOpts: {
-      category: 'Navigation',
-      action: 'Home',
-      name: 'Opened Account Options',
-    },
-  })
   const history = useHistory()
   const [
     accountOptionsButtonElement,
@@ -50,7 +42,6 @@ export default function MenuBar() {
         ref={setAccountOptionsButtonElement}
         title={t('accountOptions')}
         onClick={() => {
-          openAccountOptionsEvent()
           setAccountOptionsMenuOpen(true)
         }}
       />

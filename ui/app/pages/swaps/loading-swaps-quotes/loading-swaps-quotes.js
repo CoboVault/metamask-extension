@@ -11,7 +11,6 @@ import {
   getQuotesFetchStartTime,
 } from '../../../ducks/swaps/swaps'
 import { I18nContext } from '../../../contexts/i18n'
-import { MetaMetricsContext } from '../../../contexts/metametrics.new'
 import Mascot from '../../../components/ui/mascot'
 import SwapsFooter from '../swaps-footer'
 import BackgroundAnimation from './background-animation'
@@ -59,7 +58,6 @@ export default function LoadingSwapsQuotes({
   onDone,
 }) {
   const t = useContext(I18nContext)
-  const metaMetricsEvent = useContext(MetaMetricsContext)
   const dispatch = useDispatch()
   const history = useHistory()
   const animationEventEmitter = useRef(new EventEmitter())
@@ -226,7 +224,6 @@ export default function LoadingSwapsQuotes({
       <SwapsFooter
         submitText={t('back')}
         onSubmit={async () => {
-          metaMetricsEvent(quotesRequestCancelledEventConfig)
           await dispatch(navigateBackToBuildQuote(history))
         }}
         hideCancel

@@ -71,7 +71,6 @@ export default class TransactionController extends EventEmitter {
     this.blockTracker = opts.blockTracker
     this.signEthTx = opts.signTransaction
     this.inProcessOfSigning = new Set()
-    this._trackMetaMetricsEvent = opts.trackMetaMetricsEvent
     this._getParticipateInMetrics = opts.getParticipateInMetrics
 
     this.memStore = new ObservableStore({})
@@ -926,11 +925,6 @@ export default class TransactionController extends EventEmitter {
   _trackSwapsMetrics(txMeta, approvalTxMeta) {
     if (this._getParticipateInMetrics() && txMeta.swapMetaData) {
       if (txMeta.txReceipt.status === '0x0') {
-        this._trackMetaMetricsEvent({
-          event: 'Swap Failed',
-          sensitiveProperties: { ...txMeta.swapMetaData },
-          category: 'swaps',
-        })
       } else {
         const tokensReceived = getSwapsTokensReceivedFromTxMeta(
           txMeta.destinationTokenSymbol,
@@ -953,17 +947,6 @@ export default class TransactionController extends EventEmitter {
           .div(txMeta.swapMetaData.estimated_gas, 10)
           .times(100)
           .round(2)}%`
-
-        this._trackMetaMetricsEvent({
-          event: 'Swap Completed',
-          category: 'swaps',
-          sensitiveProperties: {
-            ...txMeta.swapMetaData,
-            token_to_amount_received: tokensReceived,
-            quote_vs_executionRatio: quoteVsExecutionRatio,
-            estimated_vs_used_gasRatio: estimatedVsUsedGasRatio,
-          },
-        })
       }
     }
   }

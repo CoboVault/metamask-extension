@@ -43,8 +43,6 @@ export default function reduceMetamask(state = {}, action) {
     firstTimeFlowType: null,
     completedOnboarding: false,
     knownMethodData: {},
-    participateInMetaMetrics: null,
-    metaMetricsSendCount: 0,
     nextNonce: null,
     ...state,
   }
@@ -285,18 +283,6 @@ export default function reduceMetamask(state = {}, action) {
         currentNetworkTxList,
       }
     }
-
-    case actionConstants.SET_PARTICIPATE_IN_METAMETRICS:
-      return {
-        ...metamaskState,
-        participateInMetaMetrics: action.value,
-      }
-
-    case actionConstants.SET_METAMETRICS_SEND_COUNT:
-      return {
-        ...metamaskState,
-        metaMetricsSendCount: action.value,
-      }
 
     case actionConstants.SET_USE_BLOCKIE:
       return {

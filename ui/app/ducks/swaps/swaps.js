@@ -372,7 +372,6 @@ export const fetchQuotesAndSetQuoteState = (
   history,
   inputValue,
   maxSlippage,
-  metaMetricsEvent,
 ) => {
   return async (dispatch, getState) => {
     let swapsFeatureIsLive = false
@@ -467,20 +466,6 @@ export const fetchQuotesAndSetQuoteState = (
 
     dispatch(setFromToken(selectedFromToken))
 
-    metaMetricsEvent({
-      event: 'Quotes Requested',
-      category: 'swaps',
-      sensitiveProperties: {
-        token_from: fromTokenSymbol,
-        token_from_amount: String(inputValue),
-        token_to: toTokenSymbol,
-        request_type: balanceError ? 'Quote' : 'Order',
-        slippage: maxSlippage,
-        custom_slippage: maxSlippage !== 2,
-        anonymizedData: true,
-      },
-    })
-
     try {
       const fetchStartTime = Date.now()
       dispatch(setQuotesFetchStartTime(fetchStartTime))
@@ -513,43 +498,8 @@ export const fetchQuotesAndSetQuoteState = (
       ])
 
       if (Object.values(fetchedQuotes)?.length === 0) {
-        metaMetricsEvent({
-          event: 'No Quotes Available',
-          category: 'swaps',
-          sensitiveProperties: {
-            token_from: fromTokenSymbol,
-            token_from_amount: String(inputValue),
-            token_to: toTokenSymbol,
-            request_type: balanceError ? 'Quote' : 'Order',
-            slippage: maxSlippage,
-            custom_slippage: maxSlippage !== 2,
-          },
-        })
         dispatch(setSwapsErrorKey(QUOTES_NOT_AVAILABLE_ERROR))
       } else {
-        const newSelectedQuote = fetchedQuotes[selectedAggId]
-
-        metaMetricsEvent({
-          event: 'Quotes Received',
-          category: 'swaps',
-          sensitiveProperties: {
-            token_from: fromTokenSymbol,
-            token_from_amount: String(inputValue),
-            token_to: toTokenSymbol,
-            token_to_amount: calcTokenAmount(
-              newSelectedQuote.destinationAmount,
-              newSelectedQuote.decimals || 18,
-            ),
-            request_type: balanceError ? 'Quote' : 'Order',
-            slippage: maxSlippage,
-            custom_slippage: maxSlippage !== 2,
-            response_time: Date.now() - fetchStartTime,
-            best_quote_source: newSelectedQuote.aggregator,
-            available_quotes: Object.values(fetchedQuotes)?.length,
-            anonymizedData: true,
-          },
-        })
-
         dispatch(setInitialGasEstimate(selectedAggId))
       }
     } catch (e) {
@@ -568,7 +518,7 @@ export const fetchQuotesAndSetQuoteState = (
   }
 }
 
-export const signAndSendTransactions = (history, metaMetricsEvent) => {
+export const signAndSendTransactions = (history) => {
   return async (dispatch, getState) => {
     let swapsFeatureIsLive = false
     try {
@@ -654,12 +604,6 @@ export const signAndSendTransactions = (history, metaMetricsEvent) => {
       fee_savings: usedQuote.savings?.fee,
       median_metamask_fee: usedQuote.savings?.medianMetaMaskFee,
     }
-
-    metaMetricsEvent({
-      event: 'Swap Started',
-      category: 'swaps',
-      sensitiveProperties: swapMetaData,
-    })
 
     let finalApproveTxMeta
     const approveTxParams = getApproveTxParams(state)

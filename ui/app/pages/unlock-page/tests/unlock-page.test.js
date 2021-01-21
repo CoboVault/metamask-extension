@@ -16,7 +16,6 @@ describe('Unlock Page', function () {
     onRestore: sinon.spy(),
     onSubmit: sinon.spy(),
     forceUpdateMetamaskState: sinon.spy(),
-    showOptInModal: sinon.spy(),
   }
 
   beforeEach(function () {

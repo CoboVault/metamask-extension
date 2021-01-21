@@ -10,10 +10,6 @@ import {
   SEND_ROUTE,
   BUILD_QUOTE_ROUTE,
 } from '../../../helpers/constants/routes'
-import {
-  useMetricEvent,
-  useNewMetricEvent,
-} from '../../../hooks/useMetricEvent'
 import { useSwapsEthToken } from '../../../hooks/useSwapsEthToken'
 import Tooltip from '../../ui/tooltip'
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display'
@@ -40,20 +36,6 @@ import WalletOverview from './wallet-overview'
 const EthOverview = ({ className }) => {
   const dispatch = useDispatch()
   const t = useContext(I18nContext)
-  const sendEvent = useMetricEvent({
-    eventOpts: {
-      category: 'Navigation',
-      action: 'Home',
-      name: 'Clicked Send: Eth',
-    },
-  })
-  const depositEvent = useMetricEvent({
-    eventOpts: {
-      category: 'Navigation',
-      action: 'Home',
-      name: 'Clicked Deposit',
-    },
-  })
   const history = useHistory()
   const keyring = useSelector(getCurrentKeyring)
   const usingHardwareWallet = keyring.type.search('Hardware') !== -1
@@ -62,11 +44,6 @@ const EthOverview = ({ className }) => {
   const selectedAccount = useSelector(getSelectedAccount)
   const { balance } = selectedAccount
   const networkId = useSelector(getCurrentNetworkId)
-  const enteredSwapsEvent = useNewMetricEvent({
-    event: 'Swaps Opened',
-    properties: { source: 'Main View', active_currency: 'ETH' },
-    category: 'swaps',
-  })
   const swapsEnabled = useSelector(getSwapsFeatureLiveness)
   const swapsEthToken = useSwapsEthToken()
 
@@ -117,7 +94,6 @@ const EthOverview = ({ className }) => {
             Icon={BuyIcon}
             label={t('buy')}
             onClick={() => {
-              depositEvent()
               dispatch(showModal({ name: 'DEPOSIT_ETHER' }))
             }}
           />
@@ -127,7 +103,6 @@ const EthOverview = ({ className }) => {
             Icon={SendIcon}
             label={t('send')}
             onClick={() => {
-              sendEvent()
               history.push(SEND_ROUTE)
             }}
           />
@@ -138,7 +113,6 @@ const EthOverview = ({ className }) => {
               Icon={SwapIcon}
               onClick={() => {
                 if (networkId === MAINNET_NETWORK_ID) {
-                  enteredSwapsEvent()
                   dispatch(setSwapsFromToken(swapsEthToken))
                   if (usingHardwareWallet) {
                     global.platform.openExtensionInBrowser(BUILD_QUOTE_ROUTE)

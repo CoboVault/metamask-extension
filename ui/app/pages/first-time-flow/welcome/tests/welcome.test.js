@@ -41,7 +41,6 @@ describe('Welcome', function () {
   it('routes to correct password when participateInMetaMetrics is initialized', function () {
     const props = {
       welcomeScreenSeen: true,
-      participateInMetaMetrics: false,
       history: {
         push: sinon.spy(),
       },

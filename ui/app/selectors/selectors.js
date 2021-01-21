@@ -310,17 +310,6 @@ export function getDomainMetadata(state) {
   return state.metamask.domainMetadata
 }
 
-export const getBackgroundMetaMetricState = (state) => {
-  return {
-    network: getCurrentNetworkId(state),
-    accountType: getAccountType(state),
-    metaMetricsId: state.metamask.metaMetricsId,
-    numberOfTokens: getNumberOfTokens(state),
-    numberOfAccounts: getNumberOfAccounts(state),
-    participateInMetaMetrics: state.metamask.participateInMetaMetrics,
-  }
-}
-
 export function getRpcPrefsForCurrentProvider(state) {
   const { frequentRpcListDetail, provider } = state.metamask
   const selectRpcInfo = frequentRpcListDetail.find(

@@ -13,7 +13,6 @@ export default class EndOfFlowScreen extends PureComponent {
 
   static propTypes = {
     history: PropTypes.object,
-    completionMetaMetricsName: PropTypes.string,
     setCompletedOnboarding: PropTypes.func,
     onboardingInitiator: PropTypes.exact({
       location: PropTypes.string,
@@ -30,7 +29,7 @@ export default class EndOfFlowScreen extends PureComponent {
   }
 
   async _onOnboardingComplete() {
-    const { setCompletedOnboarding, completionMetaMetricsName } = this.props
+    const { setCompletedOnboarding } = this.props
     await setCompletedOnboarding()
   }
 
@@ -61,7 +60,9 @@ export default class EndOfFlowScreen extends PureComponent {
       <div className="end-of-flow">
         <MetaFoxLogo />
         <div className="end-of-flow__emoji">🎉</div>
-        <div className="first-time-flow__header">{t('congratulationsCobo')}</div>
+        <div className="first-time-flow__header">
+          {t('congratulationsCobo')}
+        </div>
         <div className="first-time-flow__text-block end-of-flow__text-1">
           {t('endOfFlowMessage1Cobo')}
         </div>

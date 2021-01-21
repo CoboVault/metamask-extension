@@ -59,7 +59,6 @@ import {
   currentNetworkTxListSelector,
   getRpcPrefsForCurrentProvider,
 } from '../../selectors'
-import { useNewMetricEvent } from '../../hooks/useMetricEvent'
 import { getValueFromWeiHex } from '../../helpers/utils/conversions.util'
 
 import FeatureToggledRoute from '../../helpers/higher-order-components/feature-toggled-route'
@@ -196,32 +195,6 @@ export default function Swap() {
       dispatch(prepareToLeaveSwaps())
     }
   }, [dispatch])
-
-  const exitedSwapsEvent = useNewMetricEvent({
-    event: 'Exited Swaps',
-    category: 'swaps',
-    sensitiveProperties: {
-      token_from: fetchParams?.sourceTokenInfo?.symbol,
-      token_from_amount: fetchParams?.value,
-      request_type: fetchParams?.balanceError,
-      token_to: fetchParams?.destinationTokenInfo?.symbol,
-      slippage: fetchParams?.slippage,
-      custom_slippage: fetchParams?.slippage !== 2,
-      current_screen: pathname.match(/\/swaps\/(.+)/u)[1],
-    },
-  })
-  const exitEventRef = useRef()
-  useEffect(() => {
-    exitEventRef.current = () => {
-      exitedSwapsEvent()
-    }
-  })
-
-  useEffect(() => {
-    return () => {
-      exitEventRef.current()
-    }
-  }, [])
 
   useEffect(() => {
     if (swapsErrorKey && !isSwapsErrorRoute) {

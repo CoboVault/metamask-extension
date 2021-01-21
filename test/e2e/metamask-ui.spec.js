@@ -65,10 +65,6 @@ describe('MetaMask', function () {
       await driver.delay(largeDelayMs)
     })
 
-    it('clicks the "No thanks" option on the metametrics opt-in screen', async function () {
-      await driver.clickElement(By.css('.btn-default'))
-      await driver.delay(largeDelayMs)
-    })
 
     it('accepts a secure password', async function () {
       const passwordBox = await driver.findElement(
