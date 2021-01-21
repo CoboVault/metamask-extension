@@ -3,10 +3,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Mascot from '../../../components/ui/mascot'
 import Button from '../../../components/ui/button'
-import {
-  INITIALIZE_CREATE_NEW_VAULT_ROUTE,
-  INITIALIZE_CREATE_PASSWORD_ROUTE,
-} from '../../../helpers/constants/routes'
+import { INITIALIZE_CREATE_NEW_VAULT_ROUTE } from '../../../helpers/constants/routes'
 
 export default class Welcome extends PureComponent {
   static propTypes = {
@@ -25,8 +22,10 @@ export default class Welcome extends PureComponent {
   }
 
   componentDidMount() {
-    const { history } = this.props
+    const { history, welcomeScreenSeen } = this.props
+    if (welcomeScreenSeen) {
       history.push(INITIALIZE_CREATE_NEW_VAULT_ROUTE)
+    }
   }
 
   handleContinue = () => {
