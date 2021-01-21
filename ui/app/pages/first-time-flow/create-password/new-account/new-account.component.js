@@ -9,7 +9,6 @@ import TextField from '../../../../components/ui/text-field'
 
 export default class NewAccount extends PureComponent {
   static contextTypes = {
-    metricsEvent: PropTypes.func,
     t: PropTypes.func,
   }
 
@@ -99,15 +98,6 @@ export default class NewAccount extends PureComponent {
 
     try {
       await onSubmit(password)
-
-      this.context.metricsEvent({
-        eventOpts: {
-          category: 'Onboarding',
-          action: 'Create Password',
-          name: 'Submit Password',
-        },
-      })
-
       history.push(INITIALIZE_SEED_PHRASE_ROUTE)
     } catch (error) {
       this.setState({ passwordError: error.message })
@@ -115,14 +105,6 @@ export default class NewAccount extends PureComponent {
   }
 
   toggleTermsCheck = () => {
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Onboarding',
-        action: 'Create Password',
-        name: 'Check ToS',
-      },
-    })
-
     this.setState((prevState) => ({
       termsChecked: !prevState.termsChecked,
     }))
@@ -150,13 +132,6 @@ export default class NewAccount extends PureComponent {
           <a
             onClick={(e) => {
               e.preventDefault()
-              this.context.metricsEvent({
-                eventOpts: {
-                  category: 'Onboarding',
-                  action: 'Create Password',
-                  name: 'Go Back from Onboarding Create',
-                },
-              })
               this.props.history.push(INITIALIZE_SELECT_ACTION_ROUTE)
             }}
             href="#"

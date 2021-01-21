@@ -23,7 +23,6 @@ export default class SendAssetRow extends Component {
 
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   state = {
@@ -40,16 +39,6 @@ export default class SendAssetRow extends Component {
         isShowingDropdown: false,
       },
       () => {
-        this.context.metricsEvent({
-          eventOpts: {
-            category: 'Transactions',
-            action: 'Send Screen',
-            name: 'User clicks "Assets" dropdown',
-          },
-          customVariables: {
-            assetSelected: token ? 'ERC20' : 'ETH',
-          },
-        })
         this.props.setSendToken(token)
       },
     )

@@ -6,7 +6,6 @@ import TextField from '../../../components/ui/text-field'
 
 export default class CreateVault extends PureComponent {
   static contextTypes = {
-    metricsEvent: PropTypes.func,
     t: PropTypes.func,
   }
 
@@ -97,13 +96,6 @@ export default class CreateVault extends PureComponent {
 
     try {
       await onCreateNewVault(password)
-      this.context.metricsEvent({
-        eventOpts: {
-          category: 'Onboarding',
-          action: 'Create Password',
-          name: 'Submit Password',
-        },
-      })
       this.props.setFirstTimeFlowType('import-cobovault')
       history.push(INITIALIZE_CREATE_COBO_VAULT_HINT)
     } catch (error) {
@@ -112,14 +104,6 @@ export default class CreateVault extends PureComponent {
   }
 
   toggleTermsCheck = () => {
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Onboarding',
-        action: 'Create Password',
-        name: 'Check ToS',
-      },
-    })
-
     this.setState((prevState) => ({
       termsChecked: !prevState.termsChecked,
     }))

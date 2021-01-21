@@ -14,7 +14,6 @@ import Popover from '../../ui/popover'
 export default class TransactionListItemDetails extends PureComponent {
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   static defaultProps = {
@@ -52,15 +51,6 @@ export default class TransactionListItemDetails extends PureComponent {
       rpcPrefs,
     } = this.props
     const { hash, metamaskNetworkId } = primaryTransaction
-
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Navigation',
-        action: 'Activity Log',
-        name: 'Clicked "View on Etherscan"',
-      },
-    })
-
     global.platform.openTab({
       url: getBlockExplorerUrlForTx(metamaskNetworkId, hash, rpcPrefs),
     })
@@ -82,15 +72,6 @@ export default class TransactionListItemDetails extends PureComponent {
     const { transactionGroup } = this.props
     const { primaryTransaction: transaction } = transactionGroup
     const { hash } = transaction
-
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Navigation',
-        action: 'Activity Log',
-        name: 'Copied Transaction ID',
-      },
-    })
-
     this.setState({ justCopied: true }, () => {
       copyToClipboard(hash)
       setTimeout(() => this.setState({ justCopied: false }), 1000)
@@ -234,22 +215,8 @@ export default class TransactionListItemDetails extends PureComponent {
                 senderName={senderNickname}
                 senderAddress={senderAddress}
                 onRecipientClick={() => {
-                  this.context.metricsEvent({
-                    eventOpts: {
-                      category: 'Navigation',
-                      action: 'Activity Log',
-                      name: 'Copied "To" Address',
-                    },
-                  })
                 }}
                 onSenderClick={() => {
-                  this.context.metricsEvent({
-                    eventOpts: {
-                      category: 'Navigation',
-                      action: 'Activity Log',
-                      name: 'Copied "From" Address',
-                    },
-                  })
                 }}
               />
             </div>

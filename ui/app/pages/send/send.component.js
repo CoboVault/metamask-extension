@@ -58,7 +58,6 @@ export default class SendTransactionScreen extends Component {
 
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   state = {
@@ -317,13 +316,6 @@ export default class SendTransactionScreen extends Component {
       <EnsInput
         className="send__to-row"
         scanQrCode={(_) => {
-          this.context.metricsEvent({
-            eventOpts: {
-              category: 'Transactions',
-              action: 'Edit Screen',
-              name: 'Used QR scanner',
-            },
-          })
           this.props.scanQrCode()
         }}
         onChange={this.onRecipientInputChange}

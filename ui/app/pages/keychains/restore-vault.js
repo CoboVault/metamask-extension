@@ -13,7 +13,6 @@ import Button from '../../components/ui/button'
 class RestoreVaultPage extends Component {
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   static propTypes = {
@@ -92,13 +91,6 @@ class RestoreVaultPage extends Component {
     leaveImportSeedScreenState()
     createNewVaultAndRestore(password, this.parseSeedPhrase(seedPhrase)).then(
       () => {
-        this.context.metricsEvent({
-          eventOpts: {
-            category: 'Retention',
-            action: 'userEntersSeedPhrase',
-            name: 'onboardingRestoredVault',
-          },
-        })
         initializeThreeBox()
         history.push(DEFAULT_ROUTE)
       },

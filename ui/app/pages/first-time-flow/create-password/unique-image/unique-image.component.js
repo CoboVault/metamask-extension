@@ -6,7 +6,6 @@ import { INITIALIZE_END_OF_FLOW_ROUTE } from '../../../../helpers/constants/rout
 export default class UniqueImageScreen extends PureComponent {
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   static propTypes = {
@@ -31,13 +30,6 @@ export default class UniqueImageScreen extends PureComponent {
           type="primary"
           className="first-time-flow__button"
           onClick={() => {
-            this.context.metricsEvent({
-              eventOpts: {
-                category: 'Onboarding',
-                action: 'Agree to Phishing Warning',
-                name: 'Agree to Phishing Warning',
-              },
-            })
             history.push(INITIALIZE_END_OF_FLOW_ROUTE)
           }}
         >

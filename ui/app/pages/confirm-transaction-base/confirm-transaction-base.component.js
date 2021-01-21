@@ -26,7 +26,6 @@ import {
 export default class ConfirmTransactionBase extends Component {
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   static propTypes = {
@@ -219,22 +218,6 @@ export default class ConfirmTransactionBase extends Component {
       methodData = {},
     } = this.props
 
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
-        action: 'Confirm Screen',
-        name: 'User clicks "Edit" on gas',
-      },
-      customVariables: {
-        recipientKnown: null,
-        functionType:
-          actionKey ||
-          getMethodName(methodData.name) ||
-          TRANSACTION_CATEGORIES.CONTRACT_INTERACTION,
-        origin,
-      },
-    })
-
     if (onEditGas) {
       onEditGas()
     } else {
@@ -412,22 +395,6 @@ export default class ConfirmTransactionBase extends Component {
       methodData = {},
     } = this.props
 
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
-        action: 'Confirm Screen',
-        name: 'Edit Transaction',
-      },
-      customVariables: {
-        recipientKnown: null,
-        functionType:
-          actionKey ||
-          getMethodName(methodData.name) ||
-          TRANSACTION_CATEGORIES.CONTRACT_INTERACTION,
-        origin,
-      },
-    })
-
     onEdit({ txData, tokenData, tokenProps })
   }
 
@@ -453,7 +420,6 @@ export default class ConfirmTransactionBase extends Component {
   }
 
   handleCancel() {
-    const { metricsEvent } = this.context
     const {
       onCancel,
       txData,
@@ -468,21 +434,6 @@ export default class ConfirmTransactionBase extends Component {
     } = this.props
 
     this._removeBeforeUnload()
-    metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
-        action: 'Confirm Screen',
-        name: 'Cancel',
-      },
-      customVariables: {
-        recipientKnown: null,
-        functionType:
-          actionKey ||
-          getMethodName(methodData.name) ||
-          TRANSACTION_CATEGORIES.CONTRACT_INTERACTION,
-        origin,
-      },
-    })
     updateCustomNonce('')
     if (onCancel) {
       onCancel(txData)
@@ -495,7 +446,6 @@ export default class ConfirmTransactionBase extends Component {
   }
 
   handleSubmit() {
-    const { metricsEvent } = this.context
     const {
       txData: { origin },
       sendTransaction,
@@ -523,21 +473,6 @@ export default class ConfirmTransactionBase extends Component {
       },
       () => {
         this._removeBeforeUnload()
-        metricsEvent({
-          eventOpts: {
-            category: 'Transactions',
-            action: 'Confirm Screen',
-            name: 'Transaction Completed',
-          },
-          customVariables: {
-            recipientKnown: null,
-            functionType:
-              actionKey ||
-              getMethodName(methodData.name) ||
-              TRANSACTION_CATEGORIES.CONTRACT_INTERACTION,
-            origin,
-          },
-        })
 
         setMetaMetricsSendCount(metaMetricsSendCount + 1).then(() => {
           if (onSubmit) {
@@ -636,17 +571,6 @@ export default class ConfirmTransactionBase extends Component {
 
   _beforeUnload = () => {
     const { txData: { origin, id } = {}, cancelTransaction } = this.props
-    const { metricsEvent } = this.context
-    metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
-        action: 'Confirm Screen',
-        name: 'Cancel Tx Via Notification Close',
-      },
-      customVariables: {
-        origin,
-      },
-    })
     cancelTransaction({ id })
   }
 
@@ -663,17 +587,6 @@ export default class ConfirmTransactionBase extends Component {
       getNextNonce,
       tryReverseResolveAddress,
     } = this.props
-    const { metricsEvent } = this.context
-    metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
-        action: 'Confirm Screen',
-        name: 'Confirm: Started',
-      },
-      customVariables: {
-        origin,
-      },
-    })
 
     if (getEnvironmentType() === ENVIRONMENT_TYPE_NOTIFICATION) {
       window.addEventListener('beforeunload', this._beforeUnload)

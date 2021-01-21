@@ -13,7 +13,6 @@ import NetworkForm from './network-form'
 export default class NetworksTab extends PureComponent {
   static contextTypes = {
     t: PropTypes.func.isRequired,
-    metricsEvent: PropTypes.func.isRequired,
   }
 
   static propTypes = {

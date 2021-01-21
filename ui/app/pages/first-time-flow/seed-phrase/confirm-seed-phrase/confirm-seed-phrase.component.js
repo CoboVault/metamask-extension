@@ -13,7 +13,6 @@ const EMPTY_SEEDS = Array(12).fill(null)
 
 export default class ConfirmSeedPhrase extends PureComponent {
   static contextTypes = {
-    metricsEvent: PropTypes.func,
     t: PropTypes.func,
   }
 
@@ -77,14 +76,6 @@ export default class ConfirmSeedPhrase extends PureComponent {
     }
 
     try {
-      this.context.metricsEvent({
-        eventOpts: {
-          category: 'Onboarding',
-          action: 'Seed Phrase Setup',
-          name: 'Verify Complete',
-        },
-      })
-
       setSeedPhraseBackedUp(true).then(async () => {
         initializeThreeBox()
         history.push(INITIALIZE_END_OF_FLOW_ROUTE)

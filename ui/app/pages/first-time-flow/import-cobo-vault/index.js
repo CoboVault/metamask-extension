@@ -258,7 +258,6 @@ const mapDispatchToProps = (dispatch) => {
 
 ConnectHardwareForm.contextTypes = {
   t: PropTypes.func,
-  metricsEvent: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectHardwareForm)

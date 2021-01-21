@@ -18,7 +18,6 @@ export default class AmountMaxButton extends Component {
 
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   setMaxAmount() {
@@ -40,15 +39,6 @@ export default class AmountMaxButton extends Component {
 
   onMaxClick = () => {
     const { setMaxModeTo, clearMaxAmount, maxModeOn } = this.props
-    const { metricsEvent } = this.context
-
-    metricsEvent({
-      eventOpts: {
-        category: 'Transactions',
-        action: 'Edit Screen',
-        name: 'Clicked "Amount Max"',
-      },
-    })
     if (maxModeOn) {
       setMaxModeTo(false)
       clearMaxAmount()

@@ -11,7 +11,6 @@ import { getMostRecentOverviewPage } from '../../../ducks/history/history'
 class PrivateKeyImportView extends Component {
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   static propTypes = {
@@ -42,24 +41,10 @@ class PrivateKeyImportView extends Component {
     importNewAccount('Private Key', [privateKey])
       .then(({ selectedAddress }) => {
         if (selectedAddress) {
-          this.context.metricsEvent({
-            eventOpts: {
-              category: 'Accounts',
-              action: 'Import Account',
-              name: 'Imported Account with Private Key',
-            },
-          })
           history.push(mostRecentOverviewPage)
           displayWarning(null)
         } else {
           displayWarning('Error importing account.')
-          this.context.metricsEvent({
-            eventOpts: {
-              category: 'Accounts',
-              action: 'Import Account',
-              name: 'Error importing with Private Key',
-            },
-          })
           setSelectedAddress(firstAddress)
         }
       })

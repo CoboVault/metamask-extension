@@ -172,26 +172,9 @@ class ConnectHardwareForm extends Component {
 
     unlockHardwareWalletAccount(this.state.selectedAccount, device)
       .then((_) => {
-        this.context.metricsEvent({
-          eventOpts: {
-            category: 'Accounts',
-            action: 'Connected Hardware Wallet',
-            name: `Connected Account with: ${device}`,
-          },
-        })
         history.push(mostRecentOverviewPage)
       })
       .catch((e) => {
-        this.context.metricsEvent({
-          eventOpts: {
-            category: 'Accounts',
-            action: 'Connected Hardware Wallet',
-            name: 'Error connecting hardware wallet',
-          },
-          customVariables: {
-            error: e.message,
-          },
-        })
         this.setState({ error: e.message })
       })
   }
@@ -325,7 +308,6 @@ const mapDispatchToProps = (dispatch) => {
 
 ConnectHardwareForm.contextTypes = {
   t: PropTypes.func,
-  metricsEvent: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectHardwareForm)

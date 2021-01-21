@@ -12,7 +12,6 @@ import { conversionUtil } from '../../helpers/utils/conversion-util'
 export default class ConfirmEncryptionPublicKey extends Component {
   static contextTypes = {
     t: PropTypes.func.isRequired,
-    metricsEvent: PropTypes.func.isRequired,
   }
 
   static propTypes = {
@@ -54,15 +53,7 @@ export default class ConfirmEncryptionPublicKey extends Component {
       cancelEncryptionPublicKey,
       txData,
     } = this.props
-    const { metricsEvent } = this.context
     await cancelEncryptionPublicKey(txData, event)
-    metricsEvent({
-      eventOpts: {
-        category: 'Messages',
-        action: 'Encryption public key Request',
-        name: 'Cancel Via Notification Close',
-      },
-    })
     clearConfirmTransaction()
   }
 
@@ -195,7 +186,7 @@ export default class ConfirmEncryptionPublicKey extends Component {
       mostRecentOverviewPage,
       txData,
     } = this.props
-    const { t, metricsEvent } = this.context
+    const { t } = this.context
 
     return (
       <div className="request-encryption-public-key__footer">
@@ -206,13 +197,6 @@ export default class ConfirmEncryptionPublicKey extends Component {
           onClick={async (event) => {
             this._removeBeforeUnload()
             await cancelEncryptionPublicKey(txData, event)
-            metricsEvent({
-              eventOpts: {
-                category: 'Messages',
-                action: 'Encryption public key Request',
-                name: 'Cancel',
-              },
-            })
             clearConfirmTransaction()
             history.push(mostRecentOverviewPage)
           }}
@@ -226,13 +210,6 @@ export default class ConfirmEncryptionPublicKey extends Component {
           onClick={async (event) => {
             this._removeBeforeUnload()
             await encryptionPublicKey(txData, event)
-            this.context.metricsEvent({
-              eventOpts: {
-                category: 'Messages',
-                action: 'Encryption public key Request',
-                name: 'Confirm',
-              },
-            })
             clearConfirmTransaction()
             history.push(mostRecentOverviewPage)
           }}

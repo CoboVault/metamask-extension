@@ -214,7 +214,6 @@ const mapDispatchToProps = (dispatch) => {
 
 CreateBidirectionalQrAccount.contextTypes = {
   t: PropTypes.func,
-  metricsEvent: PropTypes.func,
 }
 
 export default connect(

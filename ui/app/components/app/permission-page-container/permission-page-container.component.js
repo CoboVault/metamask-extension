@@ -31,7 +31,6 @@ export default class PermissionPageContainer extends Component {
 
   static contextTypes = {
     t: PropTypes.func,
-    metricsEvent: PropTypes.func,
   }
 
   state = {
@@ -67,16 +66,6 @@ export default class PermissionPageContainer extends Component {
       selectedPermissions: {
         ...this.state.selectedPermissions,
         [methodName]: !this.state.selectedPermissions[methodName],
-      },
-    })
-  }
-
-  componentDidMount() {
-    this.context.metricsEvent({
-      eventOpts: {
-        category: 'Auth',
-        action: 'Connect',
-        name: 'Tab Opened',
       },
     })
   }
