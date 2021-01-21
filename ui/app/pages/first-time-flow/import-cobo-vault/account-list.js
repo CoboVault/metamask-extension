@@ -120,14 +120,6 @@ class AccountList extends Component {
     return (
       <div className="new-external-account-form__buttons">
         <Button
-          type="default"
-          large
-          className="new-external-account-form__button"
-          onClick={this.props.onCancel.bind(this)}
-        >
-          {this.context.t('cancel')}
-        </Button>
-        <Button
           type="primary"
           large
           className="new-external-account-form__button unlock"
@@ -158,7 +150,6 @@ AccountList.propTypes = {
   getPage: PropTypes.func.isRequired,
   network: PropTypes.string,
   selectedAccount: PropTypes.string,
-  onCancel: PropTypes.func,
   externalWallet: PropTypes.object.isRequired,
   onUnlockAccount: PropTypes.func.isRequired,
 }
