@@ -56,6 +56,13 @@ yarn start
 yarn dist
 ```
 
+## for firefox review
+1. use node v10.22.1 and yarn 1.22.10 to build
+2. run `yarn` to install the dependencies
+3. run `yarn dist` to build
+4. in the build folder you can see the build
+5. please use the  `./CoboVault_sync_Metamask.png` QRCode image to test this extention
+
 ## Other Docs
 
 - [How to add custom build to Chrome](./docs/add-to-chrome.md)
