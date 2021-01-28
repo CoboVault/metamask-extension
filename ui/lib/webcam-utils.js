@@ -9,9 +9,9 @@ import { getEnvironmentType, getPlatform } from '../../app/scripts/lib/util'
 
 class WebcamUtils {
   static async checkStatus() {
-    const isPopup = getEnvironmentType() === ENVIRONMENT_TYPE_POPUP
-    const isFirefoxOrBrave =
-      getPlatform() === (PLATFORM_FIREFOX || PLATFORM_BRAVE)
+    // const isPopup = getEnvironmentType() === ENVIRONMENT_TYPE_POPUP
+    // const isFirefoxOrBrave =
+    //   getPlatform() === (PLATFORM_FIREFOX || PLATFORM_BRAVE)
 
     const devices = await window.navigator.mediaDevices.enumerateDevices()
     const webcams = devices.filter((device) => device.kind === 'videoinput')
@@ -24,7 +24,8 @@ class WebcamUtils {
 
     if (hasWebcam) {
       let environmentReady = true
-      if ((isFirefoxOrBrave && isPopup) || (isPopup && !hasWebcamPermissions)) {
+      // if ((isFirefoxOrBrave && isPopup) || (isPopup && !hasWebcamPermissions)) {
+      if (!hasWebcamPermissions) {
         environmentReady = false
       }
       return {
